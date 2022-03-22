@@ -36,7 +36,7 @@ const products = [
         price: "6.40",
     },
     {
-        id: 1,
+        id: 5,
         name: "Cappacino",
         img: products1,
         description:
@@ -44,21 +44,21 @@ const products = [
         price: "6.40",
     },
     {
-        id: 2,
+        id: 6,
         name: "Mocha",
         img: products2,
         description: "Ngon hơn khi uống",
         price: "6.40",
     },
     {
-        id: 3,
+        id: 7,
         name: "Latte",
         img: products3,
         description: "Ngon hơn khi uống",
         price: "6.0",
     },
     {
-        id: 4,
+        id: 8,
         name: "Cold Java",
         img: products4,
         description: "Ngon hơn khi uống",
@@ -67,19 +67,19 @@ const products = [
 ];
 export default function Products() {
     return (
-        <div className="grid grid-cols-4 mx-auto pb-10 max-w-[1200px] gap-5 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid grid-cols-4 mx-auto lg:px-5 md:px-5 pb-10 max-w-[1200px] gap-5 md:grid-cols-2 lg:grid-cols-3 sm:grid-cols-1">
             {products.map((product) => (
-                <Link to={`/drinks/${product.name}`}>
+                <Link key={product.id} to={`/drinks/${product.name}`}>
                     <div
                         key={product.id}
-                        className="my-0 bg-secondary-500 rounded-2xl relative h-[460px]"
+                        className="my-0 bg-secondary-500 rounded-2xl relative h-[460px] sm:h-full"
                     >
                         <div className=" h-full bg-no-repeat bg-center w-full p-4 flex flex-col">
                             <div className="flex-center flex-col">
                                 <img
                                     src={product.img}
                                     alt={product.name}
-                                    className="w-full h-[150px] object-cover rounded-md"
+                                    className="w-full h-[150px] lg:h-full md:h-full object-cover rounded-md"
                                 />
                             </div>
                             <div className="text-left text-white flex flex-col h-full">

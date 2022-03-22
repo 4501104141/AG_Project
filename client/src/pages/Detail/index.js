@@ -6,14 +6,18 @@ import TabSize from "./components/TabSize";
 import { AiOutlineMinus } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useState } from "react";
-import pro111 from "../../assets/images/bg.jpg";
+import products1 from "../../assets/images/cappacino.png";
 import Button from "../../components/Button";
 import LineY from "./components/LineY";
 export default function Details() {
-    const produc1 = [
+    const products = [
         {
             id: 1,
-            img: pro111,
+            name: "Cappacino",
+            img: products1,
+            description:
+                "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor.",
+            price: "6.40",
         },
     ];
     const { id, img } = useParams();
@@ -44,8 +48,8 @@ export default function Details() {
                         <p className="leading-10">{id}</p>
                     </div>
                     <div className="flex-center gap-40 my-0 mx-auto">
-                        {produc1.map((product) => (
-                            <div className="h-full">
+                        {products.map((product) => (
+                            <div key={product.id} className="h-full">
                                 <img
                                     src={product.img}
                                     alt={product.id}
@@ -119,7 +123,10 @@ export default function Details() {
                             </div>
                             <div className="flex px-10 justify-between">
                                 <Button name="Order now" />
-                                <Button name="Add to cart" />
+                                <Button
+                                    name="Add to cart"
+                                    onClick="summitAddToCart"
+                                />
                             </div>
                         </div>
                     </div>

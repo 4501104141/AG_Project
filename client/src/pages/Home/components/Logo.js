@@ -24,13 +24,13 @@ export default function Logo() {
     ];
     return (
         <div>
-            <div className="grid grid-cols-4 h-80 cursor-pointer mx-auto my-0 max-w-[1200px]">
+            <div className="grid grid-cols-4 md:grid-cols-2 md:h-full sm:grid-cols-1 h-80 cursor-pointer mx-auto my-0 max-w-[1200px]">
                 {logo.map((item, index) => {
                     return (
                         <div key={index} className="h-full w-full">
                             <div className="h-full bg-no-repeat bg-center w-full flex justify-center items-center">
                                 <img
-                                    className="mb-9"
+                                    className="mb-9 sm:mb-5"
                                     src={item.img}
                                     alt={item.name}
                                 />

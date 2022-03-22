@@ -22,7 +22,6 @@
         background: #a0583c;
     }
     input::placeholder {
-        color: #ffffff;
         z-index: 10;
         font-size: 1.2rem;
     }
