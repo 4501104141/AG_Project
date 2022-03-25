@@ -92,7 +92,7 @@ export default function Details() {
                                 </div>
                                 <div className="py-4">
                                     <h3 className="tracking-widest pr-8 mb-5">
-                                        Mike
+                                        Milk
                                     </h3>
                                     <div className="bg-primary-500 w-[400px] h-1 relative">
                                         <LineY />
