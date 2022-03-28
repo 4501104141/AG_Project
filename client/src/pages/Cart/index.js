@@ -12,9 +12,6 @@ export default function Cart() {
     const handleAdd = () => {
         setQuality(quality + 1);
     };
-    // const total = ()=>{
-
-    // }
     return (
         <section className="">
             <div className="container bg-quaternary-500">
@@ -23,7 +20,7 @@ export default function Cart() {
                     bg-no-repeat flex-center flex-col gap-y-4 relative"
                 >
                     <div className=" py-16">
-                        <div className="w-[1200px] h-24 bg-secondary-500 rounded-full mx-auto">
+                        <div className="w-[1200px] h-24 bg-secondary-500 rounded-xl mx-auto">
                             <div className="">
                                 <div className="flex py-8 px-10 text-white text-lg font-bold tracking-widest justify-between">
                                     <h1 className="px-10 ">Products</h1>
@@ -33,13 +30,13 @@ export default function Cart() {
                                         <h1 className="px-12 ">Total Price</h1>
                                     </div>
                                 </div>
-                                <div className="w-[1200px] flex-center-y mt-10 h-48 bg-secondary-500 rounded-3xl mx-auto">
+                                <div className="w-[1200px] flex-center-y mt-10 h-48 bg-secondary-500 rounded-xl mx-auto">
                                     <div className=" flex pl-10 text-white  tracking-widest">
                                         <h1 className="flex px-6">
                                             <img
                                                 src={img1}
                                                 alt=""
-                                                className=" w-8/12 rounded-3xl h-40 object-cover"
+                                                className=" w-8/12 rounded-xl h-40 object-cover"
                                             />
                                         </h1>
                                         <div className="px-16 flex-center-x flex-col">
@@ -75,20 +72,19 @@ export default function Cart() {
                                         </div>
                                     </div>
                                 </div>
-
                                 <div className="flex px-10 py-10 tracking-widest text-white">
                                     <div className="text-white pr-5">
                                         <input
                                             type="text"
                                             placeholder="Coupon Code"
                                             maxLength={15}
-                                            className="text-base bg-primary-500 rounded-xl px-5 py-3"
+                                            className="text-base bg-primary-500 rounded-md px-5 py-3"
                                         />
                                     </div>
                                     <Button name="Apply" className="px-8" />
                                 </div>
                                 <div className="flex px-10 py-10 float-right tracking-widest text-white">
-                                    <div className="px-5 flex-center-y h-12 text-left rounded-xl bg-primary-500 ">
+                                    <div className="px-5 flex-center-y h-12 text-left rounded-md bg-primary-500 ">
                                         <span className="text-lg font-bold pr-3">
                                             Total:
                                         </span>
