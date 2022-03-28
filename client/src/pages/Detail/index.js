@@ -33,7 +33,7 @@ export default function Details() {
             <div className="container bg-quaternary-500">
                 <div className="min-h-[720px] bg-detail-bg bg-cover bg-center bg-fixed bg-no-repeat flex-center gap-y-4"></div>
                 <div className="w-full my-0 mx-auto py-20">
-                    <div className="flex-center-y text-4xl pl-60 md:text-2xl sm:px-6 sm:text-xl lg:pl-9 pb-6 tracking-wide">
+                    <div className="flex-center-y text-2xl pl-60 sm:px-6 sm:text-xl lg:pl-11 pb-4 lg:pb-0 tracking-wide">
                         <Link to="/drinks" className="font-bold ">
                             Drinks
                         </Link>
@@ -58,10 +58,10 @@ export default function Details() {
                             </div>
                         ))}
                         <div className="mx-0 my-auto lg:pl-5">
-                            <h1 className="text-7xl lg:text-5xl md:text-4xl sm:text-3xl leading-10 font-bold tracking-wide">
+                            <h1 className="text-4xl lg:text-3xl md:text-2xl sm:text-xl leading-10 font-bold tracking-wide">
                                 {id}
                             </h1>
-                            <div className="py-4 px-2 md:px-0 text-2xl md:text-xl sm:text-base font-bold">
+                            <div className="py-2 px-2 md:px-0 text-xl md:text-lg sm:text-base font-bold">
                                 <div className="py-5 flex-center-y sm:justify-between">
                                     <h3 className="tracking-widest md:pr-14 pr-8">
                                         Size

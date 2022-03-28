@@ -64,6 +64,7 @@ module.exports = {
                 "hero-pattern": "url('./assets/images/bg.jpg')",
                 "drinks-pattern": "url('./assets/images/drink-bg.png')",
                 "detail-bg": "url('./assets/images/detail-bg.png')",
+                "about-bg": "url('./assets/images/bg-about.png')",
                 "cart-bg": "url('./assets/images/bg-cart.png')",
                 "cf-left": "url('./assets/images/cf-left.png')",
                 "cf-right": "url('./assets/images/cf-right.png')",

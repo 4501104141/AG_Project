@@ -3,6 +3,8 @@ import products1 from "../assets/images/cappacino.png";
 import products2 from "../assets/images/mocha.png";
 import products3 from "../assets/images/latte.png";
 import products4 from "../assets/images/cold java.png";
+import products5 from "../assets/images/coffee-cam.png";
+import products6 from "../assets/images/coffee-tiramisu.png";
 import Button from "./Button";
 
 const products = [
@@ -37,16 +39,16 @@ const products = [
     },
     {
         id: 5,
-        name: "Cappacino",
-        img: products1,
+        name: "Coffee Cam",
+        img: products5,
         description:
             "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor.",
         price: "6.40",
     },
     {
         id: 6,
-        name: "Mocha",
-        img: products2,
+        name: "Coffee Tiramisu",
+        img: products6,
         description: "Ngon hơn khi uống",
         price: "6.40",
     },
