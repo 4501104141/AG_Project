@@ -1,6 +1,5 @@
 import { Combobox, Transition } from "@headlessui/react";
 import { HiSelector } from "react-icons/hi";
-import { AiOutlineCheck } from "react-icons/ai";
 import { useState, Fragment } from "react";
 
 export default function Price() {
@@ -15,18 +14,18 @@ export default function Price() {
         query === ""
             ? price
             : price.filter((person) =>
-                  person.name
-                      .toLowerCase()
-                      .replace(/\s+/g, "")
-                      .includes(query.toLowerCase().replace(/\s+/g, ""))
-              );
+                person.name
+                    .toLowerCase()
+                    .replace(/\s+/g, "")
+                    .includes(query.toLowerCase().replace(/\s+/g, ""))
+            );
     return (
-        <div className="relative flex-row cursor-pointer px-5">
+        <div className="relative flex-row cursor-pointer px-5 h-full">
             <Combobox value={selected} onChange={setSelected}>
-                <div className="relative mt-1 ">
-                    <div className="sm:mx-2h-14 hover:text-white relative w-full text-left cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-teal-300 focus-visible:ring-offset-2 sm:text-sm overflow-hidden">
+                <div className="relative h-full">
+                    <div className="sm:mx-2 relative w-full outline-none sm:text-sm overflow-hidden h-full">
                         <Combobox.Input
-                            className="w-full bg-primary-500 outline-none tracking-widest font-medium rounded-2xl border-none focus:ring-0 py-4 pl-5 pr-12 text-sm leading-5 text-white"
+                            className="bg-primary-500 outline-none font-medium rounded-md border-none pl-4 pr-12 text-sm leading-5 text-white h-full"
                             displayValue={(person) => person.name}
                             onChange={(event) => setQuery(event.target.value)}
                         />
@@ -44,9 +43,9 @@ export default function Price() {
                         leaveTo="opacity-0"
                         afterLeave={() => setQuery("")}
                     >
-                        <Combobox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-secondary-500 rounded-2xl max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                        <Combobox.Options className="absolute w-full mt-1 bg-secondary-500 rounded-md sm:text-sm overflow-hidden shadow-popup">
                             {filteredPrice.length === 0 && query !== "" ? (
-                                <div className="cursor-default select-none relative py-2 px-4 text-gray-700">
+                                <div className="cursor-default select-none relative py-2 px-4 text-white">
                                     Nothing found.
                                 </div>
                             ) : (
@@ -54,41 +53,13 @@ export default function Price() {
                                     <Combobox.Option
                                         key={person.id}
                                         className={({ active }) =>
-                                            `cursor-default select-none relative py-2 pl-10 pr-4 ${
-                                                active
-                                                    ? "text-white bg-primary-500"
-                                                    : "text-gray-900"
-                                            }`
-                                        }
+                                            `cursor-pointer relative text-left py-2 px-4 text-white ${active && "bg-primary-500"}`}
                                         value={person}
                                     >
-                                        {({ selected, active }) => (
-                                            <>
-                                                <span
-                                                    className={`block truncate tracking-wide ${
-                                                        selected
-                                                            ? "font-medium"
-                                                            : "font-medium"
-                                                    }`}
-                                                >
-                                                    {person.name}
-                                                </span>
-                                                {selected ? (
-                                                    <span
-                                                        className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                                                            active
-                                                                ? "text-white"
-                                                                : "text-black"
-                                                        }`}
-                                                    >
-                                                        <AiOutlineCheck
-                                                            className="w-5 h-5"
-                                                            aria-hidden="true"
-                                                        />
-                                                    </span>
-                                                ) : null}
-                                            </>
-                                        )}
+                                        <span
+                                        >
+                                            {person.name}
+                                        </span>
                                     </Combobox.Option>
                                 ))
                             )}

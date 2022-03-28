@@ -12,28 +12,24 @@ export default function Drinks() {
                     bg-no-repeat flex-center flex-col gap-y-4 relative"
                 >
                     <div className="flex w-full max-w-[1250px] lg:max-w-[1000px] md:max-w-[750px] h-24 bottom-[-50px] z-10 absolute">
-                        <div className="absolute inset-0 bg-secondary-500 opacity-60 -z-10 lg:mx-2 rounded-full"></div>
-                        <div className="flex-center-y mx-3 lg:mx-2 justify-between absolute inset-y-2/4 left-5 right-5">
-                            <div className="hidden sm:block">
-                                <Filter />
-                            </div>
+                        <div className="absolute inset-0 bg-tertiary-500 opacity-50 -z-10 lg:mx-2 rounded-md"></div>
+                        <div className="flex-center-y justify-between w-full px-4 py-6">
+                            <Filter />
                             <Button
-                                className="w-32 h-14 md:w-24 hover:color-white sm:hidden "
+                                className="px-8 h-full hover:color-white sm:hidden "
                                 name="Hot"
                             />
                             <Button
-                                className="w-32 h-14 md:w-24 absolute lg:static sm:hidden left-48 hover:color-white"
+                                className="px-8 h-full sm:hidden left-48 hover:color-white"
                                 name="New"
                             />
                             <Price />
-                            <div className="text-white ">
-                                <input
-                                    type="text"
-                                    placeholder="Find"
-                                    maxLength={20}
-                                    className="relative outline-none text-base bg-primary-500 md:w-48 sm:w-full sm:px-5 px-9 py-3 rounded-full"
-                                />
-                            </div>
+                            <input
+                                type="text"
+                                placeholder="Find"
+                                maxLength={20}
+                                className="outline-none bg-primary-500 md:w-48 sm:w-full sm:px-4 px-4 h-full rounded-md text-white font-bold placeholder:font-normal"
+                            />
                         </div>
                     </div>
                 </div>

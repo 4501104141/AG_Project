@@ -15,22 +15,22 @@ export default function Filter() {
         query === ""
             ? filter
             : filter.filter((person) =>
-                  person.name
-                      .toLowerCase()
-                      .replace(/\s+/g, "")
-                      .includes(query.toLowerCase().replace(/\s+/g, ""))
-              );
+                person.name
+                    .toLowerCase()
+                    .replace(/\s+/g, "")
+                    .includes(query.toLowerCase().replace(/\s+/g, ""))
+            );
     return (
-        <div className="relative flex-row cursor-pointer">
+        <div className="relative flex-row cursor-pointer hidden sm:block h-full">
             <Combobox value={selected} onChange={setSelected}>
-                <div className="relative mt-1 ">
-                    <div className="sm:mx-2h-14 hover:text-white relative w-full text-left cursor-default focus:outline-none focus-visible:ring-2 focus-visible:ring-opacity-75 focus-visible:ring-white focus-visible:ring-offset-teal-300 focus-visible:ring-offset-2 sm:text-sm overflow-hidden">
+                <div className="relative h-full">
+                    <div className="h-full hover:text-white relative w-full text-left cursor-default sm:text-sm overflow-hidden">
                         <Combobox.Input
-                            className="w-full bg-primary-500 outline-none tracking-widest font-medium rounded-2xl border-none focus:ring-0 py-4 pl-5 text-sm leading-5 text-white"
+                            className="w-[100px] h-full bg-primary-500 outline-none tracking-widest font-medium rounded-md border-none focus:ring-0 py-4 pl-5 text-sm leading-5 text-white"
                             displayValue={(person) => person.name}
                             onChange={(event) => setQuery(event.target.value)}
                         />
-                        <Combobox.Button className=" absolute inset-y-0 right-0 flex items-center pr-4">
+                        <Combobox.Button className="absolute inset-y-0 right-0 flex items-center pr-4">
                             <HiSelector
                                 className="w-5 h-5 text-white"
                                 aria-hidden="true"
@@ -44,7 +44,7 @@ export default function Filter() {
                         leaveTo="opacity-0"
                         afterLeave={() => setQuery("")}
                     >
-                        <Combobox.Options className="absolute w-full py-1 mt-1 overflow-auto text-base bg-secondary-500 rounded-2xl max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none sm:text-sm">
+                        <Combobox.Options className="absolute w-full mt-1 bg-secondary-500 rounded-md sm:text-sm overflow-hidden shadow-popup">
                             {filteredfilter.length === 0 && query !== "" ? (
                                 <div className="cursor-default select-none relative py-2 px-4 text-gray-700">
                                     Nothing found.
@@ -54,41 +54,13 @@ export default function Filter() {
                                     <Combobox.Option
                                         key={person.id}
                                         className={({ active }) =>
-                                            `cursor-default select-none relative py-2 pl-10 pr-4 ${
-                                                active
-                                                    ? "text-white bg-primary-500"
-                                                    : "text-gray-900"
-                                            }`
-                                        }
+                                            `cursor-pointer relative text-left py-2 px-4 text-white ${active && "bg-primary-500"}`}
                                         value={person}
                                     >
-                                        {({ selected, active }) => (
-                                            <>
-                                                <span
-                                                    className={`block truncate tracking-wide ${
-                                                        selected
-                                                            ? "font-medium"
-                                                            : "font-medium"
-                                                    }`}
-                                                >
-                                                    {person.name}
-                                                </span>
-                                                {selected ? (
-                                                    <span
-                                                        className={`absolute inset-y-0 left-0 flex items-center pl-3 ${
-                                                            active
-                                                                ? "text-white"
-                                                                : "text-black"
-                                                        }`}
-                                                    >
-                                                        <AiOutlineCheck
-                                                            className="w-5 h-5"
-                                                            aria-hidden="true"
-                                                        />
-                                                    </span>
-                                                ) : null}
-                                            </>
-                                        )}
+                                        <span
+                                        >
+                                            {person.name}
+                                        </span>
                                     </Combobox.Option>
                                 ))
                             )}
