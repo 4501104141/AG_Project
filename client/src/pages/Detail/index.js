@@ -21,12 +21,12 @@ export default function Details() {
         },
     ];
     const { id, img } = useParams();
-    const [quality, setQuality] = useState(1);
+    const [quantity, setquantity] = useState(1);
     const handleMinus = () => {
-        setQuality(quality - 1);
+        setquantity(quantity - 1);
     };
     const handleAdd = () => {
-        setQuality(quality + 1);
+        setquantity(quantity + 1);
     };
     return (
         <section>
@@ -61,16 +61,16 @@ export default function Details() {
                             <h1 className="text-4xl lg:text-3xl md:text-2xl sm:text-xl leading-10 font-bold tracking-wide">
                                 {id}
                             </h1>
-                            <div className="py-2 px-2 md:px-0 text-xl md:text-lg sm:text-base font-bold">
+                            <div className="py-2 px-2 md:px-0 text-xl md:text-lg sm:text-base">
                                 <div className="py-5 flex-center-y sm:justify-between">
-                                    <h3 className="tracking-widest md:pr-14 pr-8">
+                                    <h3 className="tracking-widest md:pr-14 pr-8 font-bold">
                                         Size
                                     </h3>
                                     <Size />
                                 </div>
-                                <div className="py-5 flex-center-y md:justify-start sm:justify-between justify-between">
+                                <div className="py-5 flex-center-y md:justify-start font-bold sm:justify-between justify-between">
                                     <h3 className="pr-11 md:pr-6 tracking-widest">
-                                        Quality
+                                        quantity
                                     </h3>
                                     <div className="flex-center-y justify-between text-white py-2 bg-secondary-500 rounded-2xl">
                                         <button
@@ -81,7 +81,7 @@ export default function Details() {
                                             <div className="absolute bg-white h-full w-1 top-0 right-0"></div>
                                         </button>
                                         <p className="text-center sm:px-5 px-8">
-                                            {quality}
+                                            {quantity}
                                         </p>
                                         <button
                                             className="relative px-6 sm:px-5 flex-center-x"
@@ -92,7 +92,7 @@ export default function Details() {
                                         </button>
                                     </div>
                                 </div>
-                                <div className="py-4 md:flex-center-y justify-between">
+                                <div className="py-4 md:flex-center-y font-bold justify-between">
                                     <h3 className="tracking-widest pr-8 md:mb-0 mb-5">
                                         Mike
                                     </h3>
@@ -101,7 +101,7 @@ export default function Details() {
                                         <div className="w-[30px] h-[30px] absolute -top-3 -right-3 bg-black rounded-full z-20"></div>
                                     </div>
                                 </div>
-                                <div className="py-4 md:flex-center-y justify-between">
+                                <div className="py-4 md:flex-center-y font-bold justify-between">
                                     <h3 className="tracking-widest pr-8 md:mb-0 mb-5">
                                         Sweetnees
                                     </h3>
@@ -110,7 +110,7 @@ export default function Details() {
                                         <div className="w-[30px] h-[30px] absolute -top-3 -right-3 bg-black rounded-full z-20"></div>
                                     </div>
                                 </div>
-                                <div className="py-4 flex justify-between">
+                                <div className="py-4 flex justify-between font-bold">
                                     <h3 className="tracking-widest pr-8 mb-5">
                                         Price
                                     </h3>
