@@ -1,5 +1,7 @@
 import ImagePerson from "../../assets/images/person.png";
 import Button from "../../components/Button";
+import { Link } from "react-router-dom";
+
 import { HiBookmark } from "react-icons/hi";
 import { BsFacebook } from "react-icons/bs";
 import { AiFillGithub } from "react-icons/ai";
@@ -88,10 +90,10 @@ export default function About() {
                                         </p>
                                     </div>
                                     <div className="flex justify-between mb-10 px-5">
-                                        <a href={person.fb}>
+                                        <a href={person.fb} target="_blank">
                                             <BsFacebook className="text-white text-2xl" />
                                         </a>
-                                        <a href={person.github}>
+                                        <a href={person.github} target="_blank">
                                             <AiFillGithub className="text-white text-2xl" />
                                         </a>
                                     </div>

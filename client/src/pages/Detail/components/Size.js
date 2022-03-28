@@ -19,7 +19,7 @@ export default function Size() {
         <div className="w-full">
             <div className="w-full max-w-md mx-auto ">
                 <RadioGroup value={selected} onChange={setSelected}>
-                    <div className="flex justify-between md:pl-0 text-xl font-bold sm:pl-0 pl-20 py-2 sm:space-x-2.5 space-x-6 rounded-2xl">
+                    <div className="flex justify-between md:pl-0 text-xl sm:pl-0 pl-24 py-2 sm:space-x-2.5 space-x-6 rounded-2xl">
                         {plans.map((plan) => (
                             <RadioGroup.Option
                                 key={plan.name}
@@ -29,11 +29,20 @@ export default function Size() {
                                         ? "ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60"
                                         : ""
                                     }
+<<<<<<< HEAD
                                      ${checked
                                         ? "bg-primary-500 font-bold bg-opacity-75 text-white"
                                         : "bg-secondary-500 text-2xl font-bold"
                                     }
                                  relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex focus:outline-none`
+=======
+                  ${
+                      checked
+                          ? "bg-primary-500 bg-opacity-75 text-white"
+                          : "bg-secondary-500 text-2xl"
+                  }
+                    relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex focus:outline-none`
+>>>>>>> ee52b4ddd9c538395140a5e0e37c9825533248fd
                                 }
                             >
                                 {({ active, checked }) => (
@@ -43,6 +52,7 @@ export default function Size() {
                                                 <div className="text-sm">
                                                     <RadioGroup.Label
                                                         as="p"
+<<<<<<< HEAD
                                                         className={`font-medium  ${checked
                                                             ? "text-white"
                                                             : "text-gray-900"
@@ -57,13 +67,18 @@ export default function Size() {
                                                             : "text-gray-500"
                                                             }`}
                                                     ></RadioGroup.Description>
+=======
+                                                        className={`  ${
+                                                            checked
+                                                                ? "text-white font-bold"
+                                                                : "text-white"
+                                                        }`}
+                                                    >
+                                                        {plan.name}
+                                                    </RadioGroup.Label>
+>>>>>>> ee52b4ddd9c538395140a5e0e37c9825533248fd
                                                 </div>
                                             </div>
-                                            {checked && (
-                                                <div className="flex-shrink-0 text-white">
-                                                    <AiOutlineCheck className="w-6 h-6" />
-                                                </div>
-                                            )}
                                         </div>
                                     </>
                                 )}
