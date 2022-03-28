@@ -4,10 +4,9 @@ export default function Button({ active, className, name, Icon }) {
         <button
             className={`${className} py-2 px-5 font-medium 
                 text-white outline-none border-none 
-                tracking-widest rounded-2xl 
+                tracking-widest rounded-md 
                 bg-primary-500 shadow-popup transition-all hover:bg-quaternary-500 
-                hover:text-black ${
-                    Icon ? "flex-center-y justify-between" : "text-center"
+                hover:text-black ${Icon ? "flex-center-y justify-between" : "text-center"
                 }`}
         >
             <p>{name}</p>

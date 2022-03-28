@@ -25,17 +25,15 @@ export default function Size() {
                                 key={plan.name}
                                 value={plan}
                                 className={({ active, checked }) =>
-                                    `${
-                                        active
-                                            ? "ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60"
-                                            : ""
+                                    `${active
+                                        ? "ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60"
+                                        : ""
                                     }
-                  ${
-                      checked
-                          ? "bg-primary-500 font-bold bg-opacity-75 text-white"
-                          : "bg-secondary-500 text-2xl font-bold"
-                  }
-                    relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex focus:outline-none`
+                                     ${checked
+                                        ? "bg-primary-500 font-bold bg-opacity-75 text-white"
+                                        : "bg-secondary-500 text-2xl font-bold"
+                                    }
+                                 relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex focus:outline-none`
                                 }
                             >
                                 {({ active, checked }) => (
@@ -45,21 +43,19 @@ export default function Size() {
                                                 <div className="text-sm">
                                                     <RadioGroup.Label
                                                         as="p"
-                                                        className={`font-medium  ${
-                                                            checked
-                                                                ? "text-white"
-                                                                : "text-gray-900"
-                                                        }`}
+                                                        className={`font-medium  ${checked
+                                                            ? "text-white"
+                                                            : "text-gray-900"
+                                                            }`}
                                                     >
                                                         {plan.name}
                                                     </RadioGroup.Label>
                                                     <RadioGroup.Description
                                                         as="span"
-                                                        className={`inline ${
-                                                            checked
-                                                                ? "text-sky-100"
-                                                                : "text-gray-500"
-                                                        }`}
+                                                        className={`inline ${checked
+                                                            ? "text-sky-100"
+                                                            : "text-gray-500"
+                                                            }`}
                                                     ></RadioGroup.Description>
                                                 </div>
                                             </div>

@@ -74,7 +74,7 @@ export default function Products() {
                 <Link key={product.id} to={`/drinks/${product.name}`}>
                     <div
                         key={product.id}
-                        className="my-0 bg-secondary-500 rounded-2xl relative h-[460px] lg:h-[520px] sm:h-full"
+                        className="my-0 bg-secondary-500 rounded-2xl relative h-[440px] lg:h-full"
                     >
                         <div className=" h-full bg-no-repeat bg-center w-full p-4 flex flex-col">
                             <div className="flex-center flex-col">
@@ -88,7 +88,7 @@ export default function Products() {
                                 <h1 className="my-2 font-bold text-3xl ">
                                     {product.name}
                                 </h1>
-                                <p className="font-light text-base line-clamp-5">
+                                <p className="font-light line-clamp-5 text-[#FFFADA]">
                                     {product.description}
                                 </p>
                                 <div className="relative justify-between mt-auto flex-center-y flex-row">
