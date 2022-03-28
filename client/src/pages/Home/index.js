@@ -21,9 +21,9 @@ export default function Home() {
                         Get your life
                     </Link>
                 </div>
-                <div className="grid grid-cols-3 items-center ">
-                    <div className="bg-cf-left bg-no-repeat h-60 bg-center"></div>
-                    <div className=" text-2xl ">
+                <div className="grid grid-cols-3 md:grid-cols-1 items-center ">
+                    <div className="bg-cf-left lg:text-lg  bg-no-repeat h-60 bg-center"></div>
+                    <div className="text-2xl lg:text-lg">
                         <p className="font-bold italic text-shadow-yellow">
                             Once coffee is in vogue,
                             <br /> the spirit is awakened,

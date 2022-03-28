@@ -1,7 +1,7 @@
 export default function ExampleComponent() {
     return (
         <div className="shadow-popup">
-            Example Component 12
+            Example Component
         </div>
     );
 }

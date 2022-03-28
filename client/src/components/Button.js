@@ -6,7 +6,7 @@ export default function Button({ active, className, name, Icon }) {
                 text-white outline-none border-none 
                 tracking-widest rounded-2xl 
                 bg-primary-500 shadow-popup transition-all hover:bg-quaternary-500 
-                hover:text-black z-30 ${
+                hover:text-black ${
                     Icon ? "flex-center-y justify-between" : "text-center"
                 }`}
         >

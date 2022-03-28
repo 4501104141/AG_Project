@@ -63,6 +63,9 @@ module.exports = {
             backgroundImage: {
                 "hero-pattern": "url('./assets/images/bg.jpg')",
                 "drinks-pattern": "url('./assets/images/drink-bg.png')",
+                "detail-bg": "url('./assets/images/detail-bg.png')",
+                "about-bg": "url('./assets/images/bg-about.png')",
+                "cart-bg": "url('./assets/images/bg-cart.png')",
                 "cf-left": "url('./assets/images/cf-left.png')",
                 "cf-right": "url('./assets/images/cf-right.png')",
                 "logo-1": "url('./assets/images/logo1.png')",
@@ -70,7 +73,6 @@ module.exports = {
                 "logo-3": "url('./assets/images/logo3.png')",
                 "logo-4": "url('./assets/images/logo4.png')",
                 "input-1": "linear-gradient(to right, #A0583C, #be8064)",
-                "detail-bg": "url('./assets/images/detail-bg.png')",
             },
             maxWidth: {
                 container: "96rem",
