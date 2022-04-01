@@ -4,7 +4,8 @@ const orderSchema = new Schema(
     {
         user: { type: Schema.Types.ObjectId, ref: "User" },
         products: [{
-            type: Schema.Types.ObjectId, ref: "Product", option: {
+            type: Schema.Types.ObjectId, ref: "Product",
+            option: {
                 sweetness: { type: String, enum: ["Sweet", "Sour", "Bitter"] },
                 size: { type: String, enum: ["S", "M", "L"] },
                 quantity: { type: Number, default: 1 },
@@ -43,9 +44,8 @@ const orderSchema = new Schema(
             }
         },
         coupon: { type: Schema.Types.ObjectId, ref: "Coupon" },
-        discount: { type: Number, default: 0 },
         totalBefore: { type: Number, default: 0 },
-        shipping: { type: Number, default: 0 },
+        discount: { type: Number, default: 0 },
         totalAfter: { type: Number, default: 0 },
         note: { type: String },
         feedback: { type: String },
