@@ -7,6 +7,9 @@ import Home from "pages/Home";
 import About from "pages/About";
 
 import { useRoutes } from "react-router-dom";
+import Account from "pages/Account";
+import Addresses from "pages/Account/components/Addresses";
+import Purchase from "pages/Account/components/Purchase";
 
 export default function App() {
     return useRoutes([
@@ -21,6 +24,24 @@ export default function App() {
                 {
                     path: "cart",
                     element: <Cart />,
+                },
+                {
+                    path: "account-settings",
+                    element: <Account />,
+                    children: [
+                        {
+                            index: true,
+                            element: <Addresses />,
+                        },
+                        {
+                            path: "purchase",
+                            element: <Purchase />,
+                        },
+                        {
+                            path: "address",
+                            element: <Addresses />,
+                        },
+                    ],
                 },
                 {
                     path: "about-us",

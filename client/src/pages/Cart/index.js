@@ -5,12 +5,12 @@ import { AiOutlinePlus } from "react-icons/ai";
 import { useState } from "react";
 import Button from "../../components/Button";
 export default function Cart() {
-    const [quality, setQuality] = useState(1);
+    const [quantity, setquantity] = useState(1);
     const handleMinus = () => {
-        setQuality(quality - 1);
+        quantity <= 1 ? setquantity(quantity) : setquantity(quantity - 1);
     };
     const handleAdd = () => {
-        setQuality(quality + 1);
+        setquantity(quantity + 1);
     };
     return (
         <section className="">
@@ -59,7 +59,7 @@ export default function Cart() {
                                                     <AiOutlineMinus size={30} />
                                                 </button>
                                                 <p className="text-center px-6">
-                                                    {quality}
+                                                    {quantity}
                                                 </p>
                                                 <button
                                                     className=""

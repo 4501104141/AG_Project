@@ -16,10 +16,10 @@ const plans = [
 export default function Size() {
     const [selected, setSelected] = useState(plans[0]);
     return (
-        <div className="w-full">
-            <div className="w-full max-w-md mx-auto ">
+        <div className="">
+            <div className="">
                 <RadioGroup value={selected} onChange={setSelected}>
-                    <div className="flex justify-between md:pl-0 text-xl sm:pl-0 pl-24 py-2 sm:space-x-2.5 space-x-6 rounded-2xl">
+                    <div className="flex-center justify-between md:pl-0 text-xl sm:pl-0 py-2 sm:space-x-2.5 space-x-10 rounded-2xl">
                         {plans.map((plan) => (
                             <RadioGroup.Option
                                 key={plan.name}
@@ -32,15 +32,15 @@ export default function Size() {
                                     }
                                      ${
                                          checked
-                                             ? "bg-primary-500 font-bold bg-opacity-75 text-white"
-                                             : "bg-secondary-500 text-2xl font-bold"
+                                             ? "bg-primary-500 font-bold w-14 bg-opacity-75 text-white"
+                                             : "bg-secondary-500 text-2xl w-14 font-bold"
                                      }
-                                 relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex focus:outline-none`
+                                 relative rounded-lg shadow-md py-4 cursor-pointer flex-center focus:outline-none`
                                 }
                             >
                                 {({ active, checked }) => (
                                     <>
-                                        <div className="flex items-center justify-between w-full">
+                                        <div className="flex items-center justify-between">
                                             <div className="flex items-center">
                                                 <div className="text-sm">
                                                     <RadioGroup.Label

@@ -9,6 +9,7 @@ import { useState } from "react";
 import products1 from "../../assets/images/cappacino.png";
 import Button from "../../components/Button";
 import LineY from "./components/LineY";
+import Reviews from "./components/Reviews";
 export default function Details() {
     const products = [
         {
@@ -20,10 +21,10 @@ export default function Details() {
             price: "6.40",
         },
     ];
-    const { id, img } = useParams();
+    const { id } = useParams();
     const [quantity, setquantity] = useState(1);
     const handleMinus = () => {
-        setquantity(quantity - 1);
+        quantity <= 1 ? setquantity(quantity) : setquantity(quantity - 1);
     };
     const handleAdd = () => {
         setquantity(quantity + 1);
@@ -31,8 +32,8 @@ export default function Details() {
     return (
         <section>
             <div className="container bg-quaternary-500">
-                <div className="min-h-[720px] bg-detail-bg bg-cover bg-center bg-fixed bg-no-repeat flex-center gap-y-4"></div>
-                <div className="w-full my-0 mx-auto py-20">
+                <div className="flex-center gap-y-4"></div>
+                <div className="w-full py-20">
                     <div className="flex-center-y text-2xl pl-60 sm:px-6 sm:text-xl lg:pl-11 pb-4 lg:pb-0 tracking-wide">
                         <Link to="/drinks" className="font-bold ">
                             Drinks
@@ -45,36 +46,42 @@ export default function Details() {
                         >
                             <BsArrowRight />
                         </IconContext.Provider>
-                        <p className="leading-10">{id}</p>
+                        <p>{id}</p>
                     </div>
-                    <div className="flex-center-y justify-between px-28 sm:px-6 w-10/12 lg:w-full lg:gap-5 my-0 mx-auto lg:px-10">
-                        {products.map((product) => (
-                            <div key={product.id} className="w-full h-full">
-                                <img
-                                    src={product.img}
-                                    alt={product.id}
-                                    className="flex h-[550px] md:h-[400px] lg:h-[500px] w-[400px] sm:h-[390px] md:mb-16 object-center object-cover rounded-xl"
-                                />
+                    <div className="w-full grid grid-cols-2 mx-auto lg:gap-10 gap-20 px-2 max-w-6xl lg:grid-cols-1">
+                        <div className="flex-center flex-col lg:pt-5 space-y-10">
+                            <img
+                                src={products[0].img}
+                                alt={products[0].id}
+                                className="w-full lg:w-3/6 sm:w-4/6 object-cover rounded-md"
+                            />
+                            <div className="text-center lg:px-40 md:px-32 sm:px-10 px-10">
+                                <p className="md:text-lg sm:text-base">
+                                    "Lorem ipsum dolor sit amet, consectetur
+                                    adipiscing elit. Massa, fermentum id id
+                                    vitae, integer fermentum tellus. In vitae id
+                                    nisl quis ornare diam commodo in vel dolor."
+                                </p>
                             </div>
-                        ))}
-                        <div className="mx-0 my-auto lg:pl-5">
-                            <h1 className="text-4xl lg:text-3xl md:text-2xl sm:text-xl leading-10 font-bold tracking-wide">
+                        </div>
+                        <div className="lg:pl-5">
+                            <h1 className="text-4xl lg:text-3xl md:text-2xl sm:text-xl font-bold tracking-wide">
                                 {id}
                             </h1>
-                            <div className="py-2 px-2 md:px-0 text-xl md:text-lg sm:text-base">
-                                <div className="py-5 flex-center-y sm:justify-between">
+                            <div className="px-4 text-xl md:text-lg sm:text-base">
+                                <div className="py-2 flex-center-y justify-between">
                                     <h3 className="tracking-widest md:pr-14 pr-8 font-bold">
                                         Size
                                     </h3>
                                     <Size />
                                 </div>
-                                <div className="py-5 flex-center-y md:justify-start font-bold sm:justify-between justify-between">
+                                <div className="py-4 flex-center-y font-bold justify-between">
                                     <h3 className="pr-11 md:pr-6 tracking-widest">
-                                        quantity
+                                        Quantity
                                     </h3>
                                     <div className="flex-center-y justify-between text-white py-2 bg-secondary-500 rounded-2xl">
                                         <button
-                                            className="relative w-1/3 flex-center-x sm:px-5 px-6"
+                                            className="relative w-1/3 flex-center-x sm:px-5 px-7"
                                             onClick={handleMinus}
                                         >
                                             <AiOutlineMinus size={30} />
@@ -84,7 +91,7 @@ export default function Details() {
                                             {quantity}
                                         </p>
                                         <button
-                                            className="relative px-6 sm:px-5 flex-center-x"
+                                            className="relative px-7 sm:px-5 flex-center-x"
                                             onClick={handleAdd}
                                         >
                                             <AiOutlinePlus size={30} />
@@ -110,16 +117,16 @@ export default function Details() {
                                         <div className="w-[30px] h-[30px] absolute -top-3 -right-3 bg-black rounded-full z-20"></div>
                                     </div>
                                 </div>
-                                <div className="py-4 flex justify-between font-bold">
-                                    <h3 className="tracking-widest pr-8 mb-5">
+                                <div className="py-4 flex justify-between pb-8 font-bold">
+                                    <h3 className="tracking-widest pr-8">
                                         Price
                                     </h3>
-                                    <h3 className="tracking-widest pr-8 mb-5">
+                                    <h3 className="tracking-widest pr-8">
                                         6.40$
                                     </h3>
                                 </div>
                             </div>
-                            <div className="flex px-10 md:px-4 sm:px-0 justify-between">
+                            <div className="flex px-10 lg:justify-end lg:space-x-10 md:px-4 sm:px-0 justify-around">
                                 <Button name="Order now" className="sm:px-3" />
                                 <Button
                                     name="Add to cart"
@@ -127,6 +134,12 @@ export default function Details() {
                                     className="sm:px-3"
                                 />
                             </div>
+                        </div>
+                    </div>
+                    <div className="py-5 container tracking-wide lg:px-11 px-60 font-bold ">
+                        <div className="py-5 text-2xl ">
+                            REVIEWS
+                            <Reviews />
                         </div>
                     </div>
                 </div>

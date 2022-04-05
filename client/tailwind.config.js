@@ -73,6 +73,8 @@ module.exports = {
                 "logo-3": "url('./assets/images/logo3.png')",
                 "logo-4": "url('./assets/images/logo4.png')",
                 "input-1": "linear-gradient(to right, #A0583C, #be8064)",
+                "review-1": "url('./assets/images/review1.png')",
+                "review-2": "url('./assets/images/review2.png')",
             },
             maxWidth: {
                 container: "96rem",
