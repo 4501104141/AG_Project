@@ -7,9 +7,9 @@ const userSchema = new Schema(
         avatar: { type: String },
         addresses: [
             {
-                name: { type: String },
-                phone: { type: String },
-                address: { type: String },
+                name: { type: String, required: true },
+                phone: { type: String, required: true },
+                address: { type: String, required: true },
                 isDefault: { type: Boolean, default: false },
             }
         ],

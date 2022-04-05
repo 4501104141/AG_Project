@@ -29,7 +29,6 @@ const orderSchema = new Schema(
             name: { type: String },
             phone: { type: String },
             address: { type: String },
-            isDefault: { type: Boolean, default: false },
         },
         payment: {
             method: {
