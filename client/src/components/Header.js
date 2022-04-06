@@ -5,10 +5,13 @@ import GoogleLogin from "react-google-login";
 import { AiOutlineMenu } from "react-icons/ai";
 import { Fragment, useState } from "react";
 import { IoMdClose } from "react-icons/io";
+import { userApi } from "apis/userApi";
 export default function Header() {
     const [isShowMenuMobile, setIsShowMenuMobile] = useState(false);
-    const responseGoogle = (response) => {
-        alert("Hi! " + response.profileObj.givenName);
+    const responseGoogle = async (rs) => {
+        const response = await userApi.loginGoogle(rs.tokenId);
+        console.log(response);
+        // alert("Hi! " + rs.profileObj.givenName);
         // console.log(response);
     };
     const handleLogOut = () => {

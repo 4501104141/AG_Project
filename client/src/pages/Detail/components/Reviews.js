@@ -1,8 +1,5 @@
-// import review1 from "../../../assets/images/review1.png";
-// import review2 from "../../../assets/images/review2.png";
 import reviewPerson from "../../../assets/images/person.png";
-
-import { useState } from "react";
+import { useEffect, useLayoutEffect, useState } from "react";
 import Button from "components/Button";
 export default function Review() {
     const [reviews, setReviews] = useState([
@@ -27,22 +24,22 @@ export default function Review() {
     // const [image, setImage] = useState("");
 
     const [review, setReview] = useState("");
-    const [something, setSomething] = useState("");
+    const [description, setDescription] = useState("");
     const handleAdd = () => {
+        if (!name || !description) {
+            alert("Nhap du thong tin di!");
+            return;
+        }
+        setName("");
+        setDescription("");
         const newReview = {
             id: reviews.length + 1,
-            name: name === "" ? alert("nhập name vào đi m") : name,
+            name,
             img: reviewPerson,
-            description:
-                something === "" ? alert("nhập nhận xét vào đi") : something,
+            description,
         };
         setReviews([...reviews, newReview]);
-        setName("");
-        setSomething("");
     };
-
-    // chưa xữ lý validation
-
     return (
         <div className="">
             <div className="grid grid-cols-2 gap-7 pt-5">
@@ -81,8 +78,8 @@ export default function Review() {
                             className="bg-quaternary-500 w-full pl-5 pr-32 py-4 focus:outline-black focus:rounded-xl border-0"
                         />
                         <input
-                            value={something}
-                            onChange={(e) => setSomething(e.target.value)}
+                            value={description}
+                            onChange={(e) => setDescription(e.target.value)}
                             type="text"
                             placeholder="Something about this product"
                             className="bg-quaternary-500 w-full pl-5 pr-32 py-4 focus:outline-black focus:rounded-xl border-0"

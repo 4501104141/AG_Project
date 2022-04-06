@@ -9,7 +9,7 @@ export default function Account() {
         <section>
             <div className="container px-2 bg-quaternary-500 min-h-screen">
                 <div className="grid grid-cols-12 sm:grid-cols-none md:pt-32 py-10 gap-x-4 gap-y-5 ">
-                    <div className="md:col-span-3 col-span-2 sm:flex-1 bg-secondary-500 h-[200px] p-10 sm:flex-row flex-center-y flex-col gap-5">
+                    <div className="md:col-span-3 sm:col-span-12 col-span-2 bg-secondary-500 h-[200px] p-10 flex-center-y flex-col gap-5">
                         <Button
                             name="Purchase"
                             className="py-3"
@@ -31,7 +31,7 @@ export default function Account() {
                             )}
                         />
                     </div>
-                    <div className="col-span-10 md:col-span-9">
+                    <div className="col-span-10 md:col-span-9 sm:col-span-12">
                         <Outlet />
                     </div>
                 </div>

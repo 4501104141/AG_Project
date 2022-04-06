@@ -1,15 +1,16 @@
 import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
-import { IconContext } from "react-icons";
 import Size from "./components/Size";
 import { AiOutlineMinus } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import products1 from "../../assets/images/cappacino.png";
 import Button from "../../components/Button";
-import LineY from "./components/LineY";
-import Reviews from "./components/Reviews";
+// import Reviews from "./components/Reviews";
+import RangePicker from "./components/RangePicker";
+import { axiosClient } from "apis/axiosClient";
+import { userApi } from "apis/userApi";
 export default function Details() {
     const products = [
         {
@@ -38,14 +39,7 @@ export default function Details() {
                         <Link to="/drinks" className="font-bold ">
                             Drinks
                         </Link>
-                        <IconContext.Provider
-                            value={{
-                                color: "black",
-                                className: "text-5xl mx-5",
-                            }}
-                        >
-                            <BsArrowRight />
-                        </IconContext.Provider>
+                        <BsArrowRight className="text-black text-5xl mx-5" />
                         <p>{id}</p>
                     </div>
                     <div className="w-full grid grid-cols-2 mx-auto lg:gap-10 gap-20 px-2 max-w-6xl lg:grid-cols-1">
@@ -101,20 +95,18 @@ export default function Details() {
                                 </div>
                                 <div className="py-4 md:flex-center-y font-bold justify-between">
                                     <h3 className="tracking-widest pr-8 md:mb-0 mb-5">
-                                        Mike
+                                        Milk
                                     </h3>
                                     <div className="bg-primary-500 w-[400px] md:w-6/12 h-1 relative">
-                                        <LineY />
-                                        <div className="w-[30px] h-[30px] absolute -top-3 -right-3 bg-black rounded-full z-20"></div>
+                                        <RangePicker />
                                     </div>
                                 </div>
                                 <div className="py-4 md:flex-center-y font-bold justify-between">
                                     <h3 className="tracking-widest pr-8 md:mb-0 mb-5">
-                                        Sweetnees
+                                        Sweetness
                                     </h3>
                                     <div className="bg-primary-500 w-[400px] md:w-6/12 h-1 relative">
-                                        <LineY />
-                                        <div className="w-[30px] h-[30px] absolute -top-3 -right-3 bg-black rounded-full z-20"></div>
+                                        <RangePicker />
                                     </div>
                                 </div>
                                 <div className="py-4 flex justify-between pb-8 font-bold">
@@ -134,12 +126,6 @@ export default function Details() {
                                     className="sm:px-3"
                                 />
                             </div>
-                        </div>
-                    </div>
-                    <div className="py-5 container tracking-wide lg:px-11 px-60 font-bold ">
-                        <div className="py-5 text-2xl ">
-                            REVIEWS
-                            <Reviews />
                         </div>
                     </div>
                 </div>

@@ -49,3 +49,10 @@
         @apply absolute top-1/2 left-0 -translate-y-1/2;
     }
 }
+.picker-range{
+    --value: "Cho Linh";
+}
+.picker-range::after{
+    content: var(--value) !important;
+
+}

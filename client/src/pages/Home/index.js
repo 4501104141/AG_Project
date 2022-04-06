@@ -2,8 +2,10 @@ import { Link } from "react-router-dom";
 import Line from "./components/Line";
 import Logo from "./components/Logo";
 import Products from "components/Products";
+import { useSelector } from "react-redux";
 
 export default function Home() {
+    const count = useSelector((state) => state.counter.value);
     return (
         <main className="text-center">
             <div className="container bg-quaternary-500">
@@ -11,9 +13,11 @@ export default function Home() {
                     <h2 className="font-extrabold text-quaternary-500 text-shadow-yellow text-7xl">
                         Power up with coffee
                     </h2>
+
                     <p className="text-tertiary-500 text-2xl">
                         Start your exciting day with a cup of Brew Coffee
                     </p>
+                    <p className="text-white font-bold text-lg">{count}</p>
                     <Link
                         to="/drinks"
                         className="block px-8 py-3 bg-secondary-500 shadow-md rounded-md shadow-secondary-400 text-white font-medium text-xl hover:bg-secondary-400 transition-all active:bg-secondary-600"
