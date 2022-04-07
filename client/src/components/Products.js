@@ -72,10 +72,7 @@ export default function Products() {
         <div className="grid grid-cols-4 mx-auto lg:px-5 md:px-5 pb-10 max-w-[1200px] gap-5 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1">
             {products.map((product) => (
                 <Link key={product.id} to={`/drinks/${product.name}`}>
-                    <div
-                        key={product.id}
-                        className="my-0 bg-secondary-500 rounded-2xl relative h-[440px] lg:h-full"
-                    >
+                    <div className="my-0 bg-secondary-500 rounded-2xl relative h-[440px] lg:h-full">
                         <div className=" h-full bg-no-repeat bg-center w-full p-4 flex flex-col">
                             <div className="flex-center flex-col">
                                 <img

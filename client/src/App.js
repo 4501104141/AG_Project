@@ -5,10 +5,10 @@ import Drinks from "pages/Drinks";
 import Example from "pages/Example";
 import Home from "pages/Home";
 import About from "pages/About";
-
+import Payment from "pages/Payment";
 import { useRoutes } from "react-router-dom";
 import Account from "pages/Account";
-import Addresses from "pages/Account/components/Addresses";
+import Address from "pages/Account/components/Address";
 import Purchase from "pages/Account/components/Purchase";
 
 export default function App() {
@@ -31,7 +31,7 @@ export default function App() {
                     children: [
                         {
                             index: true,
-                            element: <Addresses />,
+                            element: <Address />,
                         },
                         {
                             path: "purchase",
@@ -39,7 +39,7 @@ export default function App() {
                         },
                         {
                             path: "address",
-                            element: <Addresses />,
+                            element: <Address />,
                         },
                     ],
                 },
@@ -61,8 +61,8 @@ export default function App() {
                     ],
                 },
                 {
-                    path: "example",
-                    element: <Example />,
+                    path: "payment",
+                    element: <Payment />,
                 },
             ],
         },

@@ -1,16 +1,18 @@
-import { Link } from "react-router-dom";
 import img1 from "../../assets/images/mocha.png";
 import { AiOutlineMinus } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useState } from "react";
+import { Link, Outlet, useLocation } from "react-router-dom";
+import { compareLocation } from "utils";
 import Button from "../../components/Button";
 export default function Cart() {
-    const [quantity, setquantity] = useState(1);
+    const location = useLocation();
+    const [quantity, setQuantity] = useState(1);
     const handleMinus = () => {
-        quantity <= 1 ? setquantity(quantity) : setquantity(quantity - 1);
+        quantity <= 1 ? setQuantity(quantity) : setQuantity(quantity - 1);
     };
     const handleAdd = () => {
-        setquantity(quantity + 1);
+        setQuantity(quantity + 1);
     };
     return (
         <section className="">
@@ -91,7 +93,16 @@ export default function Cart() {
                                         10.000 USD
                                     </div>
                                     <div className="px-5"></div>
-                                    <Button name="Check Out" />
+                                    <Button
+                                        name="Check out"
+                                        className="py-3"
+                                        link
+                                        href="/payment"
+                                        active={compareLocation(
+                                            location.pathname,
+                                            "/payment"
+                                        )}
+                                    />
                                 </div>
                             </div>
                         </div>

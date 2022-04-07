@@ -18,7 +18,7 @@ export default function Purchase() {
     return (
         <div className="center bg-secondary-500 rounded-xl">
             <div className="flex-center-y justify-between px-10 pt-8 pb-10">
-                <p className="text-white tracking-wider text-center">
+                <p className="text-white text-3xl tracking-wider font-black text-center italic">
                     Purchase
                 </p>
                 <Button name="Completed" />
