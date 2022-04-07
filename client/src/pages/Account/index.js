@@ -1,5 +1,5 @@
 import Button from "components/Button";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 import { compareLocation } from "utils";
 
 export default function Account() {
