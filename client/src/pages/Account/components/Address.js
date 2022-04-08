@@ -1,8 +1,8 @@
 import React from "react";
-import Line from "./Line";
 import Button from "../../../components/Button";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
+import ModalCreditCard from "pages/Payment/components/ModalCreditCard";
 export default function Address() {
     let [isOpen, setIsOpen] = useState(false);
     const [currentAddressEditIndex, setCurrentAddressEditIndex] = useState(-1);

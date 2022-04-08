@@ -35,7 +35,7 @@ export default function Purchase() {
                                     className="w-2/5 object-cover rounded-2xl"
                                 />
                                 <div className="flex">
-                                    <div className="flex flex-col text-tertiary-500 text-right px-10">
+                                    <div className="flex flex-col text-right px-10">
                                         <span className="py-2 ">Name:</span>
                                         <span className="py-2 ">Size:</span>
                                         <span className="py-2 ">
@@ -62,7 +62,7 @@ export default function Purchase() {
                             <div className="px-10 text-xl">
                                 <span className="">{Purchase.Price}</span>
                             </div>
-                            <div className="absolute bg-white w-full md:w-6/12 h-1 -bottom-3 left-0 object-center"></div>
+                            <div className="absolute bg-black w-full md:w-6/12 h-1 -bottom-3 left-0 object-center"></div>
                         </div>
                         <div className="flex justify-end pt-5 px-10 space-x-5 tracking-widest text-white">
                             <Button name="Buy Again" />

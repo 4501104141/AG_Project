@@ -74,17 +74,6 @@ export default function Cart() {
                                         </div>
                                     </div>
                                 </div>
-                                <div className="flex px-10 py-10 tracking-widest text-white">
-                                    <div className="text-white pr-5">
-                                        <input
-                                            type="text"
-                                            placeholder="Coupon Code"
-                                            maxLength={15}
-                                            className="text-base bg-primary-500 rounded-md px-5 py-3"
-                                        />
-                                    </div>
-                                    <Button name="Apply" className="px-8" />
-                                </div>
                                 <div className="flex px-10 py-10 float-right tracking-widest text-white">
                                     <div className="px-5 flex-center-y h-12 text-left rounded-md bg-primary-500 ">
                                         <span className="text-lg font-bold pr-3">

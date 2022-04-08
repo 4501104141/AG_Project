@@ -2,12 +2,10 @@ import { useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import Size from "./components/Size";
-import { AiOutlineMinus } from "react-icons/ai";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiOutlineMinus, AiOutlinePlus } from "react-icons/ai";
 import { useEffect, useState } from "react";
 import products1 from "../../assets/images/cappacino.png";
 import Button from "../../components/Button";
-// import Reviews from "./components/Reviews";
 import RangePicker from "./components/RangePicker";
 import { axiosClient } from "apis/axiosClient";
 import { userApi } from "apis/userApi";
@@ -34,8 +32,8 @@ export default function Details() {
         <section>
             <div className="container bg-quaternary-500">
                 <div className="flex-center gap-y-4"></div>
-                <div className="w-full py-20">
-                    <div className="flex-center-y text-2xl pl-60 sm:px-6 sm:text-xl lg:pl-11 pb-4 lg:pb-0 tracking-wide">
+                <div className="w-full py-14">
+                    <div className="flex-center-y text-2xl pl-48 sm:px-6 sm:text-xl md:pt-5 lg:pl-11 pb-4 lg:pb-0 tracking-wide">
                         <Link to="/drinks" className="font-bold ">
                             Drinks
                         </Link>
@@ -93,7 +91,7 @@ export default function Details() {
                                         </button>
                                     </div>
                                 </div>
-                                <div className="py-4 md:flex-center-y font-bold justify-between">
+                                <div className="py-4 md:flex-center-y font-bold">
                                     <h3 className="tracking-widest pr-8 md:mb-0 mb-5">
                                         Milk
                                     </h3>
@@ -101,7 +99,7 @@ export default function Details() {
                                         <RangePicker />
                                     </div>
                                 </div>
-                                <div className="py-4 md:flex-center-y font-bold justify-between">
+                                <div className="py-4 md:flex-center-y font-bold">
                                     <h3 className="tracking-widest pr-8 md:mb-0 mb-5">
                                         Sweetness
                                     </h3>
