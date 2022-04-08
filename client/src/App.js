@@ -4,8 +4,12 @@ import Details from "pages/Detail";
 import Drinks from "pages/Drinks";
 import Example from "pages/Example";
 import Home from "pages/Home";
-// import Details from "pages/Details";
+import About from "pages/About";
+import Payment from "pages/Payment";
 import { useRoutes } from "react-router-dom";
+import Account from "pages/Account";
+import Address from "pages/Account/components/Address";
+import Purchase from "pages/Account/components/Purchase";
 
 export default function App() {
     return useRoutes([
@@ -22,6 +26,28 @@ export default function App() {
                     element: <Cart />,
                 },
                 {
+                    path: "account-settings",
+                    element: <Account />,
+                    children: [
+                        {
+                            index: true,
+                            element: <Address />,
+                        },
+                        {
+                            path: "purchase",
+                            element: <Purchase />,
+                        },
+                        {
+                            path: "address",
+                            element: <Address />,
+                        },
+                    ],
+                },
+                {
+                    path: "about-us",
+                    element: <About />,
+                },
+                {
                     path: "drinks",
                     children: [
                         {
@@ -35,8 +61,8 @@ export default function App() {
                     ],
                 },
                 {
-                    path: "example",
-                    element: <Example />,
+                    path: "payment",
+                    element: <Payment />,
                 },
             ],
         },

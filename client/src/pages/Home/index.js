@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 import Line from "./components/Line";
 import Logo from "./components/Logo";
 import Products from "components/Products";
+import { useSelector } from "react-redux";
 
 export default function Home() {
     return (
@@ -11,6 +12,7 @@ export default function Home() {
                     <h2 className="font-extrabold text-quaternary-500 text-shadow-yellow text-7xl">
                         Power up with coffee
                     </h2>
+
                     <p className="text-tertiary-500 text-2xl">
                         Start your exciting day with a cup of Brew Coffee
                     </p>
@@ -21,9 +23,9 @@ export default function Home() {
                         Get your life
                     </Link>
                 </div>
-                <div className="grid grid-cols-3 items-center ">
-                    <div className="bg-cf-left bg-no-repeat h-60 bg-center"></div>
-                    <div className=" text-2xl ">
+                <div className="grid grid-cols-3 md:grid-cols-1 items-center ">
+                    <div className="bg-cf-left lg:text-lg  bg-no-repeat h-60 bg-center"></div>
+                    <div className="text-2xl lg:text-lg">
                         <p className="font-bold italic text-shadow-yellow">
                             Once coffee is in vogue,
                             <br /> the spirit is awakened,
