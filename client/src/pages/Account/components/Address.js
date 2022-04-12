@@ -78,7 +78,7 @@ export default function Address() {
                     ADDRESS
                 </p>
                 <Button
-                    name="+ Add New address"
+                    name="New address"
                     className="bg-secondary-500"
                     onclick={openModal}
                 />

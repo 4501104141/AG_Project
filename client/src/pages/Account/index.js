@@ -7,9 +7,9 @@ export default function Account() {
 
     return (
         <section>
-            <div className="container px-2 bg-quaternary-500 min-h-screen">
-                <div className="grid grid-cols-12 sm:grid-cols-none md:pt-32 py-10 gap-x-4 gap-y-5 ">
-                    <div className="md:col-span-3 sm:col-span-12 col-span-2 bg-primary-500 h-[200px] rounded-xl p-10 flex-center-y flex-col gap-5">
+            <div className="container px-2 bg-quaternary-500 min-h-[620px]">
+                <div className="grid grid-cols-12 md:pt-28 py-12 gap-x-4 gap-y-5 ">
+                    <div className="md:col-span-3 sm:col-span-12 col-span-2 bg-primary-500 sm:h-0 h-[200px] rounded-xl p-10 flex-center sm:flex-row flex-col gap-5">
                         <Button
                             name="Purchase"
                             className="py-3 bg-secondary-500"

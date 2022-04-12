@@ -16,7 +16,7 @@ export default function Purchase() {
         },
     ];
     return (
-        <div className="center bg-secondary-500 rounded-xl">
+        <div className="center  bg-secondary-500 rounded-xl">
             <div className="flex-center-y justify-between px-10 pt-8 pb-10">
                 <p className="text-white text-3xl tracking-wider font-black text-center italic">
                     Purchase
@@ -26,47 +26,52 @@ export default function Purchase() {
             <div className="">
                 {myPurchase.map((Purchase) => (
                     <div className="py-5">
-                        <div className="text-white px-10 relative mb-5 flex items-center tracking-wide justify-between p-4">
+                        <div className="text-white px-10 relative mb-5 tracking-wide p-4">
                             <Line />
-                            <div className="flex">
-                                <img
-                                    src={Purchase.img}
-                                    alt={Purchase.name}
-                                    className="w-2/5 object-cover rounded-2xl"
-                                />
-                                <div className="flex">
-                                    <div className="flex flex-col text-right px-10">
-                                        <span className="py-2 ">Name:</span>
-                                        <span className="py-2 ">Size:</span>
-                                        <span className="py-2 ">
-                                            Sweetness:
-                                        </span>
-                                        <span className="py-2 ">Milk:</span>
-                                    </div>
-                                    <div className="flex flex-col">
-                                        <span className="py-2">
-                                            {Purchase.Name}
-                                        </span>
-                                        <span className="py-2">
-                                            {Purchase.Size}
-                                        </span>
-                                        <span className="py-2">
-                                            {Purchase.Sweetness}
-                                        </span>
-                                        <span className="py-2">
-                                            {Purchase.Milk}
-                                        </span>
+                            <div className="flex md:flex-col justify-between">
+                                <div className="flex items-center sm:flex-col">
+                                    <img
+                                        src={Purchase.img}
+                                        alt={Purchase.name}
+                                        className="md:w-2/5 sm:w-3/5 object-cover rounded-2xl"
+                                    />
+                                    <div className="flex-center">
+                                        <div className="flex flex-col md:px-4 text-right px-10">
+                                            <span className="py-2 ">Name:</span>
+                                            <span className="py-2 ">Size:</span>
+                                            <span className="py-2 ">
+                                                Sweetness:
+                                            </span>
+                                            <span className="py-2 ">Milk:</span>
+                                        </div>
+                                        <div className="flex flex-col">
+                                            <span className="py-2">
+                                                {Purchase.Name}
+                                            </span>
+                                            <span className="py-2">
+                                                {Purchase.Size}
+                                            </span>
+                                            <span className="py-2">
+                                                {Purchase.Sweetness}
+                                            </span>
+                                            <span className="py-2">
+                                                {Purchase.Milk}
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
+                                <div className="flex items-center justify-end sm:pt-5 text-xl text-right">
+                                    <span className="">{Purchase.Price}</span>
+                                </div>
                             </div>
-                            <div className="px-10 text-xl">
-                                <span className="">{Purchase.Price}</span>
-                            </div>
-                            <div className="absolute bg-black w-full md:w-6/12 h-1 -bottom-3 left-0 object-center"></div>
+                            <div className="absolute bg-black w-full h-1 -bottom-3 left-0 object-center"></div>
                         </div>
                         <div className="flex justify-end pt-5 px-10 space-x-5 tracking-widest text-white">
-                            <Button name="Buy Again" />
-                            <Button name="Buy Again" />
+                            <Button name="Feed Back" />
+                            <Button
+                                onclick={() => alert("Buy again thanh cong")}
+                                name="Buy Again"
+                            />
                         </div>
                     </div>
                 ))}
