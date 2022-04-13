@@ -7,95 +7,101 @@ import { compareLocation } from "utils";
 import Button from "../../components/Button";
 export default function Cart() {
     const location = useLocation();
+    const myCart = [
+        {
+            id: 1,
+            img: img1,
+            Name: "Coffee Big",
+            Size: "M",
+            Sweetness: 20,
+            Milk: 20,
+            Price: 6.4,
+        },
+    ];
+
     const [quantity, setQuantity] = useState(1);
     const handleMinus = () => {
         quantity <= 1 ? setQuantity(quantity) : setQuantity(quantity - 1);
     };
+
     const handleAdd = () => {
         setQuantity(quantity + 1);
     };
     return (
-        <section className="">
-            <div className="container bg-quaternary-500">
-                <div
-                    className="min-h-[720px] bg-cart-bg bg-cover bg-center bg-fixed 
-                    bg-no-repeat flex-center flex-col gap-y-4 relative"
-                >
-                    <div className=" py-16">
-                        <div className="w-[1200px] h-24 bg-secondary-500 rounded-xl mx-auto">
-                            <div className="">
-                                <div className="flex py-8 px-10 text-white text-lg font-bold tracking-widest justify-between">
-                                    <h1 className="px-10 ">Products</h1>
-                                    <div className="flex">
-                                        <h1 className="px-12">Unit Price</h1>
-                                        <h1 className=" px-12">Quantity</h1>
-                                        <h1 className="px-12 ">Total Price</h1>
-                                    </div>
-                                </div>
-                                <div className="w-[1200px] flex-center-y mt-10 h-48 bg-secondary-500 rounded-xl mx-auto">
-                                    <div className=" flex pl-10 text-white  tracking-widest">
-                                        <h1 className="flex px-6">
-                                            <img
-                                                src={img1}
-                                                alt=""
-                                                className=" w-8/12 rounded-xl h-40 object-cover"
-                                            />
-                                        </h1>
-                                        <div className="px-16 flex-center-x flex-col">
-                                            <h1 className="text-lg font-bold">
-                                                Mocha
-                                            </h1>
-                                            <div className="pl-2">
-                                                <p>Size: S</p>
-                                                <p>20% Sweetness</p>
-                                                <p>20% Milk</p>
-                                            </div>
-                                        </div>
-                                        <div className="flex-center pl-10 text-lg font-bold">
-                                            <h1 className="px-4">$6.40 </h1>
-                                            <div className="flex px-20 text-white">
-                                                <button
-                                                    className=""
-                                                    onClick={handleMinus}
-                                                >
-                                                    <AiOutlineMinus size={30} />
-                                                </button>
-                                                <p className="text-center px-6">
-                                                    {quantity}
-                                                </p>
-                                                <button
-                                                    className=""
-                                                    onClick={handleAdd}
-                                                >
-                                                    <AiOutlinePlus size={30} />
-                                                </button>
-                                            </div>
-                                            <h1 className="pl-5">$6.40 </h1>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div className="flex px-10 py-10 float-right tracking-widest text-white">
-                                    <div className="px-5 flex-center-y h-12 text-left rounded-md bg-primary-500 ">
-                                        <span className="text-lg font-bold pr-3">
-                                            Total:
-                                        </span>
-                                        10.000 USD
-                                    </div>
-                                    <div className="px-5"></div>
-                                    <Button
-                                        name="Check out"
-                                        className="py-3"
-                                        link
-                                        href="/payment"
-                                        active={compareLocation(
-                                            location.pathname,
-                                            "/payment"
-                                        )}
-                                    />
-                                </div>
+        <section className="container px-2 pt-16 md:pt-32  min-h-[700px] bg-quaternary-500">
+            <div className="bg-secondary-500 rounded-xl ">
+                <div className="text-white divide-y-4  divide-black">
+                    <div className="p-5">
+                        <div className="flex-center-y sm:px-0 md:px-5 px-10 text-lg font-bold tracking-widest justify-between">
+                            <h1 className="">Products</h1>
+                            <div className="flex space-x-20 md:space-x-5">
+                                <h1>Unit Price</h1>
+                                <h1>Quantity</h1>
+                                <h1>Total Price</h1>
                             </div>
                         </div>
                     </div>
+
+                    {myCart.map((item) => (
+                        <div
+                            key={item.id}
+                            className="flex-center-y text-white p-10 md:p-5 sm:p-2 justify-between"
+                        >
+                            <div className="flex md:flex-col">
+                                <div className="flex-center-y items-center ">
+                                    <img
+                                        src={item.img}
+                                        alt="product"
+                                        className="w-5/6 md:w-full object-cover rounded-2xl"
+                                    />
+                                </div>
+                                <div className="flex-center px-10 md:px-0 md:py-5">
+                                    <div className="flex flex-col space-y-2 md:px-4 text-right pr-2">
+                                        <span>Name:</span>
+                                        <span>Size:</span>
+                                        <span>Sweetness:</span>
+                                        <span>Milk:</span>
+                                    </div>
+                                    <div className="flex flex-col space-y-2">
+                                        <span>{item.Name}</span>
+                                        <span>{item.Size}</span>
+                                        <span>{item.Sweetness} %</span>
+                                        <span>{item.Milk} %</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="flex space-x-24 md:space-x-14 px-6 md:px-0">
+                                <h1 className="text-white">{item.Price} $</h1>
+                                <div className="flex-center-y space-x-10 md:space-x-5">
+                                    <AiOutlineMinus
+                                        className="text-white"
+                                        onClick={handleMinus}
+                                    />
+                                    <h1 className="text-white">{quantity}</h1>
+                                    <AiOutlinePlus
+                                        className="text-white"
+                                        onClick={handleAdd}
+                                    />
+                                </div>
+                                <h1 className="text-white md:px-3">
+                                    {item.Price} $
+                                </h1>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+                <div className="flex px-10 py-10 float-right space-x-10 text-white">
+                    <div className="px-5 flex-center-y rounded-md bg-primary-500 ">
+                        <span className="pr-3">Total:</span>
+                        10.000 USD
+                    </div>
+                    <Button
+                        name="Check out"
+                        className="py-3"
+                        link
+                        href="/payment"
+                        active={compareLocation(location.pathname, "/payment")}
+                    />
                 </div>
             </div>
         </section>

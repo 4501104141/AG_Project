@@ -70,7 +70,7 @@ export default function About() {
                         {persons.map((person) => {
                             return (
                                 <div
-                                    className="relative max-w-[320px] mx-auto px-20 md:px-16 py-10 rounded-3xl even:bg-secondary-500 odd:bg-primary-500"
+                                    className="relative max-w-[320px] mx-auto px-20 md:px-16 py-10 rounded-3xl bg-primary-500"
                                     key={person.id}
                                 >
                                     <HiBookmark className="text-white text-6xl absolute -top-2 left-8" />
@@ -105,7 +105,7 @@ export default function About() {
                                     </div>
                                     <Button
                                         name="Hire me"
-                                        className=" absolute right-5 bottom-5"
+                                        className=" absolute bg-secondary-500 right-5 bottom-5"
                                     />
                                 </div>
                             );

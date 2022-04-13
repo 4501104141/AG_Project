@@ -2,7 +2,6 @@ import PublicLayout from "layouts/PublicLayout";
 import Cart from "pages/Cart";
 import Details from "pages/Detail";
 import Drinks from "pages/Drinks";
-import Example from "pages/Example";
 import Home from "pages/Home";
 import About from "pages/About";
 import Payment from "pages/Payment";

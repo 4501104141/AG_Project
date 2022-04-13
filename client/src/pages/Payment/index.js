@@ -156,7 +156,7 @@ export default function Payment() {
                                             </div>
                                             <div className="flex flex-col">
                                                 <p className="py-2">
-                                                    {subPrice}
+                                                    {subPrice} $
                                                 </p>
                                                 <p className="py-2">1$</p>
                                                 <p className="py-2">
@@ -164,7 +164,7 @@ export default function Payment() {
                                                     {/* {coupon} */}
                                                 </p>
                                                 <p className="py-2">
-                                                    {totalPrice}
+                                                    {totalPrice} $
                                                 </p>
                                             </div>
                                         </div>
