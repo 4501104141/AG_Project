@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { Range } from "react-range";
 
-export default function RangePicker() {
+export default function RateRangerPicker() {
     const [value, setValue] = useState([100]);
     const [classValue, setClassValue] = useState("");
     useEffect(() => {
@@ -10,7 +10,7 @@ export default function RangePicker() {
     return (
         <>
             <Range
-                step={20}
+                step={25}
                 min={0}
                 max={100}
                 values={value}
@@ -26,7 +26,7 @@ export default function RangePicker() {
                         {...props}
                         className={`w-4 h-4 bg-blue rounded-full bg-black relative after:absolute after:top-full after:left-1/2 after:-translate-x-1/2 z-10 picker-range`}
                         style={{
-                            "--value": `'${value[0]}%'`,
+                            "--value": `'Lv${value[0] / 25 + 1}'`,
                         }}
                     />
                 )}

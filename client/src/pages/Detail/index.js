@@ -21,12 +21,12 @@ export default function Details() {
         },
     ];
     const { id } = useParams();
-    const [quantity, setquantity] = useState(1);
+    const [Amount, setAmount] = useState(1);
     const handleMinus = () => {
-        quantity <= 1 ? setquantity(quantity) : setquantity(quantity - 1);
+        Amount <= 1 ? setAmount(Amount) : setAmount(Amount - 1);
     };
     const handleAdd = () => {
-        setquantity(quantity + 1);
+        setAmount(Amount + 1);
     };
     return (
         <section>
@@ -60,18 +60,16 @@ export default function Details() {
                             <h1 className="text-4xl lg:text-3xl md:text-2xl sm:text-xl font-bold tracking-wide">
                                 {id}
                             </h1>
-                            <div className="px-4 text-xl md:text-lg sm:text-base">
+                            <div className="px-4 tracking-widest text-xl md:text-lg sm:text-base">
                                 <div className="py-2 flex-center-y justify-between">
-                                    <h3 className="tracking-widest md:pr-14 pr-8 font-bold">
+                                    <h3 className=" md:pr-14 pr-8 font-bold">
                                         Size
                                     </h3>
                                     <Size />
                                 </div>
                                 <div className="py-4 flex-center-y font-bold justify-between">
-                                    <h3 className="pr-11 md:pr-6 tracking-widest">
-                                        Quantity
-                                    </h3>
-                                    <div className="flex-center-y justify-between text-white py-2 bg-secondary-500 rounded-2xl">
+                                    <h3 className="pr-11 md:pr-6">Amount</h3>
+                                    <div className="flex-center justify-between text-white py-2 bg-secondary-500 rounded-2xl">
                                         <button
                                             className="relative w-1/3 flex-center-x sm:px-5 px-7"
                                             onClick={handleMinus}
@@ -80,7 +78,7 @@ export default function Details() {
                                             <div className="absolute bg-white h-full w-1 top-0 right-0"></div>
                                         </button>
                                         <p className="text-center sm:px-5 px-8">
-                                            {quantity}
+                                            {Amount}
                                         </p>
                                         <button
                                             className="relative px-7 sm:px-5 flex-center-x"
@@ -91,16 +89,14 @@ export default function Details() {
                                         </button>
                                     </div>
                                 </div>
-                                <div className="py-4 md:flex-center-y font-bold">
-                                    <h3 className="tracking-widest pr-8 md:mb-0 mb-5">
-                                        Milk
-                                    </h3>
+                                <div className=" md:flex-center-y font-bold">
+                                    <h3 className="pr-8 md:mb-0 mb-5">Milk</h3>
                                     <div className="bg-primary-500 w-[400px] md:w-6/12 h-1 relative">
                                         <RangePicker />
                                     </div>
                                 </div>
                                 <div className="py-4 md:flex-center-y font-bold">
-                                    <h3 className="tracking-widest pr-8 md:mb-0 mb-5">
+                                    <h3 className="pr-8 md:mb-0 mb-5">
                                         Sweetness
                                     </h3>
                                     <div className="bg-primary-500 w-[400px] md:w-6/12 h-1 relative">
@@ -108,12 +104,8 @@ export default function Details() {
                                     </div>
                                 </div>
                                 <div className="py-4 flex justify-between pb-8 font-bold">
-                                    <h3 className="tracking-widest pr-8">
-                                        Price
-                                    </h3>
-                                    <h3 className="tracking-widest pr-8">
-                                        6.40$
-                                    </h3>
+                                    <h3 className="pr-8">Price</h3>
+                                    <h3 className="pr-8">6.40$</h3>
                                 </div>
                             </div>
                             <div className="flex px-10 lg:justify-end lg:space-x-10 md:px-4 sm:px-0 justify-around">

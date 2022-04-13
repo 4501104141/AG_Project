@@ -1,5 +1,4 @@
 import React from "react";
-// import Button from "../../../components/Button";
 import ModalCreditCard from "../components/ModalCreditCard";
 import { useState } from "react";
 import { RadioGroup } from "@headlessui/react";
@@ -15,7 +14,7 @@ export default function PaymentMethod() {
                 <RadioGroup
                     value={plan}
                     onChange={setPlan}
-                    className="p-8 flex-center-y text-center px-18 justify-around"
+                    className="px-5 sm:mb-4 py-8 md:p-2 md:pt-5 flex-center-y text-center px-18 justify-around"
                 >
                     <RadioGroup.Option value="Cash">
                         {({ checked }) => (

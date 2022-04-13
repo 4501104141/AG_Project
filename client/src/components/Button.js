@@ -15,7 +15,7 @@ export default function Button({
                 active ? "bg-quaternary-500 text-black" : ""
             }  py-2 px-5 font-semibold 
                 text-white outline-none border-none 
-                rounded-md block
+                rounded-md inline-block
                 bg-primary-500 shadow-md transition-all hover:bg-quaternary-500 
                 hover:text-black ${
                     Icon ? "flex-center-y justify-between" : "text-center"
