@@ -8,8 +8,8 @@ import { IoMdClose } from "react-icons/io";
 export default function Header() {
     const [isShowMenuMobile, setIsShowMenuMobile] = useState(false);
     const responseGoogle = (response) => {
+        console.log(response);
         alert("Hi! " + response.profileObj.givenName);
-        // console.log(response);
     };
     const handleLogOut = () => {
         alert("Log out");

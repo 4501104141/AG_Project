@@ -25,17 +25,33 @@ export default function Size() {
                                 key={plan.name}
                                 value={plan}
                                 className={({ active, checked }) =>
-                                    `${
-                                        active
-                                            ? "ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60"
-                                            : ""
+                                    `${active
+                                        ? "ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60"
+                                        : ""
                                     }
+<<<<<<< HEAD
                                      ${
                                          checked
                                              ? "bg-primary-500 font-bold bg-opacity-75 text-white"
                                              : "bg-secondary-500 text-2xl font-bold"
                                      }
                                  relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex focus:outline-none`
+=======
+<<<<<<< HEAD
+                                     ${checked
+                                        ? "bg-primary-500 font-bold bg-opacity-75 text-white"
+                                        : "bg-secondary-500 text-2xl font-bold"
+                                    }
+                                 relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex focus:outline-none`
+=======
+                  ${
+                      checked
+                          ? "bg-primary-500 bg-opacity-75 text-white"
+                          : "bg-secondary-500 text-2xl"
+                  }
+                    relative rounded-lg shadow-md px-5 py-4 cursor-pointer flex focus:outline-none`
+>>>>>>> ee52b4ddd9c538395140a5e0e37c9825533248fd
+>>>>>>> Linh
                                 }
                             >
                                 {({ active, checked }) => (
@@ -45,7 +61,27 @@ export default function Size() {
                                                 <div className="text-sm">
                                                     <RadioGroup.Label
                                                         as="p"
+<<<<<<< HEAD
                                                         className={`font-medium  ${
+=======
+<<<<<<< HEAD
+                                                        className={`font-medium  ${checked
+                                                            ? "text-white"
+                                                            : "text-gray-900"
+                                                            }`}
+                                                    >
+                                                        {plan.name}
+                                                    </RadioGroup.Label>
+                                                    <RadioGroup.Description
+                                                        as="span"
+                                                        className={`inline ${checked
+                                                            ? "text-sky-100"
+                                                            : "text-gray-500"
+                                                            }`}
+                                                    ></RadioGroup.Description>
+=======
+                                                        className={`  ${
+>>>>>>> Linh
                                                             checked
                                                                 ? "text-white"
                                                                 : "text-gray-900"
@@ -53,6 +89,7 @@ export default function Size() {
                                                     >
                                                         {plan.name}
                                                     </RadioGroup.Label>
+<<<<<<< HEAD
                                                     <RadioGroup.Description
                                                         as="span"
                                                         className={`inline ${
@@ -61,6 +98,9 @@ export default function Size() {
                                                                 : "text-gray-500"
                                                         }`}
                                                     ></RadioGroup.Description>
+=======
+>>>>>>> ee52b4ddd9c538395140a5e0e37c9825533248fd
+>>>>>>> Linh
                                                 </div>
                                             </div>
                                         </div>
