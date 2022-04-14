@@ -1,9 +1,7 @@
 const express = require("express");
-const { loginGoogle } = require("../controllers/User");
-// const { currentUser } = require("../middlewares/currentUser");
+const { loginGoogle, getCurrentUser, updateUser } = require("../controllers/User");
+const { currentUser } = require("../middlewares/currentUser.js");
 const Router = express.Router();
-// Control
 Router.route("/loginGoogle").post(loginGoogle);
-// Router.route("/").get(currentUser, getCurrentUser).post(verifyUser).put(currentUser, updateUser);
-//Setting
+Router.route("/").get(currentUser, getCurrentUser).patch(currentUser, updateUser);
 module.exports = Router;

@@ -6,7 +6,6 @@ const productSchema = new Schema(
         description: { type: String, required: true },
         price: { type: Number, required: true },
         image: { type: String, required: true },
-        size: { type: String, required: true, enum: ["S", "M", "L"] },
         purchases: {
             type: Number,
             default: 0
