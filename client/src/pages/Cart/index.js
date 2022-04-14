@@ -2,9 +2,10 @@ import img1 from "../../assets/images/mocha.png";
 import { AiOutlineMinus } from "react-icons/ai";
 import { AiOutlinePlus } from "react-icons/ai";
 import { useState } from "react";
-import { Link, Outlet, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { compareLocation } from "utils";
 import Button from "../../components/Button";
+import { AiOutlineClose } from "react-icons/ai";
 export default function Cart() {
     const location = useLocation();
     const myCart = [
@@ -18,14 +19,18 @@ export default function Cart() {
             Price: 6.4,
         },
     ];
-
-    const [Amount, setAmount] = useState(1);
-    const handleMinus = () => {
-        Amount <= 1 ? setAmount(Amount) : setAmount(Amount - 1);
-    };
-
-    const handleAdd = () => {
-        setAmount(Amount + 1);
+    const [amount, setAmount] = useState(1);
+    const handleChangeAmount = (type) => {
+        switch (type) {
+            case 1:
+                setAmount(amount + 1);
+                break;
+            case 0:
+                amount > 1 && setAmount(amount - 1);
+                break;
+            default:
+                break;
+        }
     };
     return (
         <section className="container bg-quaternary-500 px-2 pt-10 md:pt-32 min-h-[700px]">
@@ -33,11 +38,12 @@ export default function Cart() {
                 <div className="text-white divide-y-4  divide-black">
                     <div className="p-5">
                         <div className="flex-center-y sm:px-0 md:px-5 px-10 font-bold tracking-wide justify-between">
-                            <h1 className="">Products</h1>
+                            <p className="">Products</p>
                             <div className="flex space-x-20 md:space-x-5">
-                                <h1>Unit Price</h1>
-                                <h1>Amount</h1>
-                                <h1>Total Price</h1>
+                                <p>Unit Price</p>
+                                <p>Amount</p>
+                                <p>Total Price</p>
+                                <p>Action</p>
                             </div>
                         </div>
                     </div>
@@ -70,22 +76,28 @@ export default function Cart() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex px-8 md:px-0 space-x-16 md:space-x-1">
+                            <div className="flex-center-y md:px-0 gap-x-16 md:gap-x-1">
                                 <h1 className="text-white">{item.Price} $</h1>
                                 <div className="flex-center-y px-5 space-x-9 md:space-x-5">
                                     <AiOutlineMinus
-                                        className="text-white"
-                                        onClick={handleMinus}
+                                        className="text-white cursor-pointer"
+                                        onClick={() => handleChangeAmount(0)}
                                     />
-                                    <h1 className="text-white">{Amount}</h1>
+                                    <h1 className="text-white">{amount}</h1>
                                     <AiOutlinePlus
-                                        className="text-white"
-                                        onClick={handleAdd}
+                                        className="text-white cursor-pointer"
+                                        onClick={() => handleChangeAmount(1)}
                                     />
                                 </div>
                                 <h1 className="text-white md:px-3 md:pr-10 sm:px-0">
                                     {item.Price} $
                                 </h1>
+                                <div>
+                                    <Button
+                                        className="bg-secondary-500 text-white"
+                                        Icon={AiOutlineClose}
+                                    />
+                                </div>
                             </div>
                         </div>
                     ))}
@@ -100,10 +112,6 @@ export default function Cart() {
                         className="py-3"
                         link
                         href="/cart/payment"
-                        active={compareLocation(
-                            location.pathname,
-                            "/cart/payment"
-                        )}
                     />
                 </div>
             </div>

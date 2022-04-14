@@ -6,4 +6,21 @@ export const userApi = {
             token,
         });
     },
+    currentUser: () => {
+        return axiosClient.get("/api/v1/user/", {
+            headers: {
+                Authorization: `Bearer ${localStorage.getItem("token")}`
+            }
+        });
+    },
+    updateUser: (data) => {
+        return axiosClient.patch("/api/v1/user",
+            data,
+            {
+                headers: {
+                    Authorization: `Bearer ${localStorage.getItem("token")}`
+                }
+            }
+        );
+    }
 };

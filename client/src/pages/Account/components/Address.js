@@ -2,74 +2,78 @@ import React from "react";
 import Button from "../../../components/Button";
 import { Dialog, Transition } from "@headlessui/react";
 import { Fragment, useState } from "react";
-import ModalCreditCard from "pages/Payment/components/ModalCreditCard";
+import { useSelector } from "react-redux";
+import { userApi } from "apis/userApi";
 export default function Address() {
-    let [isOpen, setIsOpen] = useState(false);
-    const [currentAddressEditIndex, setCurrentAddressEditIndex] = useState(-1);
-    function closeModal() {
-        setIsOpen(false);
-    }
-
-    function openModal() {
-        setIsOpen(true);
-    }
+    const user = useSelector(state => state.user);
+    const [isOpen, setIsOpen] = useState(false);
+    const [currentAddressId, setCurrentAddressId] = useState(null);
     const [name, setName] = useState("");
     const [phone, setPhone] = useState("");
     const [address, setAddress] = useState("");
-    const [addresses, setAddresses] = useState([
-        {
-            id: 1,
-            name: "Peter Parker",
-            phone: "0916030512",
-            address:
-                "338/1/7 , đường An Dương Vương, phường 4, quận 5, tp. HCM",
-        },
-    ]);
-
-    const handleSubmit = () => {
-        if (currentAddressEditIndex !== -1) {
-            let newAddress = [...addresses].map((item) =>
-                item.id === currentAddressEditIndex
-                    ? { id: item.id, name, phone, address }
-                    : item
-            );
-            setAddresses(newAddress);
-            resetState();
-            return;
-        }
+    const [isDefault, setIsDefault] = useState(false);
+    const [addresses, setAddresses] = useState(user.data.addresses);
+    const handleSubmit = async () => {
         if (!name || !phone || !address) {
-            alert("Nhap du thong tin di!");
+            alert("Please fill all fields");
             return;
         }
-        const newAddress = {
-            id: addresses.length + 1,
-            name,
-            phone,
-            address,
-        };
-        console.log("cho Linh");
-        setAddresses([...addresses, newAddress]);
-        resetState();
-    };
+        if (currentAddressId) {
+            try {
+                let newAddress = [...addresses].map((item) =>
+                    item._id === currentAddressId
+                        ? { ...item, name, phone, address, isDefault }
+                        : { ...item, isDefault: isDefault ? false : item.isDefault }
+                );
+                let response = await userApi.updateUser({ addresses: newAddress });
+                setAddresses(response.data.user.addresses);
+                resetState();
+                return;
+            } catch (error) {
+                alert(error.response.data.message);
+                return;
+            }
+        }
+        try {
+            const newAddress = {
+                name,
+                phone,
+                address,
+                isDefault: addresses.length === 0,
+            };
+            const response = await userApi.updateUser({ addresses: [...addresses, newAddress] });
+            setAddresses(response.data.user.addresses);
+            resetState();
+        } catch (error) {
+            alert(error.response.data.message);
+        }
 
-    const handleDelete = (person) => {
-        setAddresses((prev) =>
-            prev.filter((addresses) => addresses.id !== person.id)
-        );
     };
-    const handleEdit = (person) => {
-        setCurrentAddressEditIndex(person.id);
-        setName(person.name);
-        setPhone(person.phone);
-        setAddress(person.address);
+    const handleDelete = async (item) => {
+        try {
+            let newAddress = [...addresses].filter((address) => address._id !== item._id);
+            const response = await userApi.updateUser({ addresses: newAddress });
+            setAddresses(response.data.user.addresses);
+        } catch (error) {
+            console.log("error: ", error);
+            alert(error.response.data.message);
+        }
+
+    };
+    const handleEdit = (item) => {
+        setCurrentAddressId(item._id);
+        setName(item.name);
+        setPhone(item.phone);
+        setAddress(item.address);
         setIsOpen(true);
     };
     const resetState = () => {
         setName("");
         setPhone("");
         setAddress("");
-        closeModal();
-        setCurrentAddressEditIndex(-1);
+        setIsDefault(false);
+        setIsOpen(false);
+        setCurrentAddressId(null);
     };
     return (
         <div className="center bg-primary-500 rounded-xl divide-y-4 divide-black">
@@ -80,13 +84,13 @@ export default function Address() {
                 <Button
                     name="New address"
                     className="bg-secondary-500"
-                    onclick={openModal}
+                    onclick={() => setIsOpen(pre => !pre)}
                 />
                 <Transition appear show={isOpen} as={Fragment}>
                     <Dialog
                         as="div"
                         className="fixed inset-0 z-10 overflow-y-auto"
-                        onClose={closeModal}
+                        onClose={() => setIsOpen(pre => !pre)}
                     >
                         <div className="min-h-screen px-4 text-center">
                             <Dialog.Overlay className="fixed inset-0" />
@@ -110,10 +114,12 @@ export default function Address() {
                                         as="h3"
                                         className="text-lg font-medium pb-4 leading-6 text-gray-900"
                                     >
-                                        New Address
+                                        {
+                                            currentAddressId ? "Edit" : "New"
+                                        }
                                     </Dialog.Title>
                                     <div className="mt-2">
-                                        <form action="">
+                                        <form action="" className="space-y-4">
                                             <input
                                                 value={name}
                                                 onChange={(e) =>
@@ -121,7 +127,7 @@ export default function Address() {
                                                 }
                                                 type="text"
                                                 placeholder="What's your name?"
-                                                className="w-full pl-5 pr-32 py-5 focus:outline-black focus:rounded-xl"
+                                                className="w-full py-2 px-4 border outline-none"
                                             />
                                             <input
                                                 value={address}
@@ -130,7 +136,7 @@ export default function Address() {
                                                 }
                                                 type="text"
                                                 placeholder="What is your address?"
-                                                className="w-full pl-5 pr-32 py-5 my-3 focus:outline-black focus:rounded-xl"
+                                                className="w-full py-2 px-4 border outline-none"
                                             />
                                             <input
                                                 value={phone}
@@ -139,8 +145,20 @@ export default function Address() {
                                                 }
                                                 type="text"
                                                 placeholder="Your phone number"
-                                                className="w-full pl-5 pr-32 py-5 focus:outline-black focus:rounded-xl"
+                                                className="w-full py-2 px-4 border outline-none"
                                             />
+                                            {
+                                                currentAddressId && <input
+                                                    checked={isDefault}
+                                                    onChange={() =>
+                                                        setIsDefault(pre => !pre)
+                                                    }
+                                                    type="checkbox"
+                                                    placeholder="Your phone number"
+                                                    className="w-4 h-4 mx-auto mt-4"
+                                                />
+                                            }
+
                                         </form>
                                     </div>
                                     <div className="mt-4">
@@ -157,34 +175,34 @@ export default function Address() {
                     </Dialog>
                 </Transition>
             </div>
-            <div className="space-y-5 divide-y-4 divide-black">
-                {addresses.map((person) => (
+            <div className="divide-y-4 divide-black">
+                {addresses.map((item) => (
                     <div
-                        key={person.id}
-                        className="text-white sm:px-4 px-10 relative flex-center-y justify-between tracking-wide p-4"
+                        key={item._id}
+                        className={`${item.isDefault ? "bg-primary-700" : ""} text-white sm:px-4 px-10 relative flex-center-y justify-between tracking-wide p-4`}
                     >
-                        <div className="flex">
+                        <div className="flex-center">
                             <div className="flex flex-col text-right sm:text-sm sm:px-5 px-10">
                                 <p className="py-2 md:w-20">Full name:</p>
                                 <p className="py-2">Phone:</p>
                                 <p className="py-2">Address:</p>
                             </div>
                             <div className="flex flex-col">
-                                <p className="py-2">{person.name}</p>
-                                <p className="py-2">{person.phone}</p>
-                                <p className="py-2">{person.address}</p>
+                                <p className="py-2">{item.name}</p>
+                                <p className="py-2">{item.phone}</p>
+                                <p className="py-2">{item.address}</p>
                             </div>
                         </div>
 
                         <div className="flex flex-col space-y-10">
                             <Button
                                 name="Edit"
-                                onclick={() => handleEdit(person)}
+                                onclick={() => handleEdit(item)}
                                 className="bg-secondary-500"
                             />
                             <Button
                                 name="Delete"
-                                onclick={() => handleDelete(person)}
+                                onclick={() => handleDelete(item)}
                                 className="bg-secondary-500"
                             />
                         </div>

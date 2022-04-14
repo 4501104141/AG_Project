@@ -1,82 +1,29 @@
 import { Link } from "react-router-dom";
-import products1 from "../assets/images/cappacino.png";
-import products2 from "../assets/images/mocha.png";
-import products3 from "../assets/images/latte.png";
-import products4 from "../assets/images/cold java.png";
-import products5 from "../assets/images/coffee-cam.png";
-import products6 from "../assets/images/coffee-tiramisu.png";
 import Button from "./Button";
+import { useEffect, useState } from "react";
+import { productApi } from "apis/productApi";
 
-const products = [
-    {
-        id: 1,
-        name: "Cappacino",
-        img: products1,
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor.",
-        price: "6.40",
-    },
-    {
-        id: 2,
-        name: "Mocha",
-        img: products2,
-        description: "Ngon hơn khi uống",
-        price: "6.40",
-    },
-    {
-        id: 3,
-        name: "Latte",
-        img: products3,
-        description: "Ngon hơn khi uống",
-        price: "6.40",
-    },
-    {
-        id: 4,
-        name: "Cold Java",
-        img: products4,
-        description: "Ngon hơn khi uống",
-        price: "6.40",
-    },
-    {
-        id: 5,
-        name: "Coffee Cam",
-        img: products5,
-        description:
-            "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Massa, fermentum id id vitae, integer fermentum tellus. In vitae id nisl quis ornare diam commodo in vel dolor.",
-        price: "6.40",
-    },
-    {
-        id: 6,
-        name: "Coffee Tiramisu",
-        img: products6,
-        description: "Ngon hơn khi uống",
-        price: "6.40",
-    },
-    {
-        id: 7,
-        name: "Latte",
-        img: products3,
-        description: "Ngon hơn khi uống",
-        price: "6.0",
-    },
-    {
-        id: 8,
-        name: "Cold Java",
-        img: products4,
-        description: "Ngon hơn khi uống",
-        price: "6.40",
-    },
-];
 export default function Products() {
+    const [products, setProducts] = useState([]);
+    useEffect(() => {
+        async function fetchAllProducts() {
+            const response = await productApi.getProducts();
+            setProducts(response.data);
+        }
+        fetchAllProducts();
+        return () => {
+            setProducts([]);
+        };
+    }, []);
     return (
         <div className="grid grid-cols-4 mx-auto lg:px-5 md:px-5 pb-10 max-w-[1200px] gap-5 md:grid-cols-2 lg:grid-cols-2 sm:grid-cols-1">
             {products.map((product) => (
-                <Link key={product.id} to={`/drinks/${product.name}`}>
+                <Link key={product._id} to={`/drinks/${product._id}`}>
                     <div className="my-0 bg-secondary-500 rounded-2xl relative h-[440px] lg:h-full">
                         <div className=" h-full bg-no-repeat bg-center w-full p-4 flex flex-col">
                             <div className="flex-center flex-col">
                                 <img
-                                    src={product.img}
+                                    src={product.image}
                                     alt={product.name}
                                     className="w-full h-[150px] lg:h-full md:h-full object-cover rounded-md"
                                 />
@@ -88,12 +35,9 @@ export default function Products() {
                                 <p className="font-light line-clamp-5 text-[#FFFADA]">
                                     {product.description}
                                 </p>
-                                <div className="relative justify-between mt-auto flex-center-y flex-row">
-                                    <h1 className="my-2 font-bold text-3xl ">
-                                        {product.price}
-                                    </h1>
-                                    <Button name="Order now" />
-                                </div>
+                                <h1 className="mt-auto text-right font-bold text-3xl">
+                                    {product.price}$
+                                </h1>
                             </div>
                         </div>
                     </div>

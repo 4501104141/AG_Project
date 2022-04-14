@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { FaUserAlt, FaShoppingCart } from "react-icons/fa";
 import { Menu, Popover, Transition } from "@headlessui/react";
 import GoogleLogin from "react-google-login";
@@ -6,16 +6,19 @@ import { AiOutlineMenu } from "react-icons/ai";
 import { Fragment, useState } from "react";
 import { IoMdClose } from "react-icons/io";
 import { userApi } from "apis/userApi";
+import { useDispatch, useSelector } from "react-redux";
+import { login, logout } from "reducers/userSlice";
 export default function Header() {
-    const [isShowMenuMobile, setIsShowMenuMobile] = useState(false);
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const user = useSelector(state => state.user);
     const responseGoogle = async (rs) => {
         const response = await userApi.loginGoogle(rs.tokenId);
-        console.log(response);
-        // alert("Hi! " + rs.profileObj.givenName);
-        // console.log(response);
+        dispatch(login(response.data));
     };
     const handleLogOut = () => {
-        alert("Log out");
+        dispatch(logout());
+        navigate("/");
     };
     return (
         <header>
@@ -42,44 +45,52 @@ export default function Header() {
                         <Menu.Button as="div">
                             <button className="transition-all py-2 flex-center-y gap-x-2 px-4 rounded-md bg-secondary-500 font-bold shadow-md hover:bg-secondary-400">
                                 <FaUserAlt />
-                                <span>Võ Hoài Nam</span>
+                                <span>{user.isLogin ? user.data.name : "Đăng nhập"}</span>
                             </button>
                         </Menu.Button>
                         <Menu.Items className="absolute top-[calc(100%+16px)] z-10 right-0 bg-secondary-500 rounded-md shadow-popup flex flex-col min-w-[200px] font-bold overflow-hidden">
-                            <Menu.Item>
-                                <a
-                                    className={`text-left font-bold px-4 py-2 hover:bg-primary-500`}
-                                    href="/account-settings"
-                                >
-                                    Thông tin tài khoản
-                                </a>
-                            </Menu.Item>
-                            <Menu.Item>
-                                <GoogleLogin
-                                    clientId={
-                                        process.env.REACT_APP_GOOGLE_CLIENT_ID
-                                    }
-                                    render={(renderProps) => (
-                                        <button
-                                            className={`text-left font-bold px-4 py-2 hover:bg-primary-500`}
-                                            onClick={renderProps.onClick}
-                                            disabled={renderProps.disabled}
-                                        >
-                                            Đăng nhập với Google
-                                        </button>
-                                    )}
-                                    onSuccess={responseGoogle}
-                                    cookiePolicy={"single_host_origin"}
-                                />
-                            </Menu.Item>
-                            <Menu.Item>
-                                <button
-                                    className={`text-left font-bold px-4 py-2 hover:bg-primary-500`}
-                                    onClick={handleLogOut}
-                                >
-                                    Đăng xuất
-                                </button>
-                            </Menu.Item>
+                            {
+                                user.isLogin ? (
+                                    <>
+                                        <Menu.Item>
+                                            <Link
+                                                className={`text-left font-bold px-4 py-2 hover:bg-primary-500`}
+                                                to="/account-settings"
+                                            >
+                                                Thông tin tài khoản
+                                            </Link>
+                                        </Menu.Item>
+                                        <Menu.Item>
+                                            <button
+                                                className={`text-left font-bold px-4 py-2 hover:bg-primary-500`}
+                                                onClick={handleLogOut}
+                                            >
+                                                Đăng xuất
+                                            </button>
+                                        </Menu.Item>
+                                    </>
+                                ) : (<Menu.Item>
+                                    <GoogleLogin
+                                        clientId={
+                                            process.env.REACT_APP_GOOGLE_CLIENT_ID
+                                        }
+                                        render={(renderProps) => (
+                                            <button
+                                                className={`text-left font-bold px-4 py-2 hover:bg-primary-500`}
+                                                onClick={renderProps.onClick}
+                                                disabled={renderProps.disabled}
+                                            >
+                                                Đăng nhập với Google
+                                            </button>
+                                        )}
+                                        onSuccess={responseGoogle}
+                                        cookiePolicy={"single_host_origin"}
+                                    />
+                                </Menu.Item>)
+                            }
+
+
+
                         </Menu.Items>
                     </Menu>
 
