@@ -37,7 +37,7 @@ export default function Cart() {
             <div className="bg-secondary-500  rounded-xl ">
                 <div className="text-white divide-y-4  divide-black">
                     <div className="p-5">
-                        <div className="flex-center-y sm:px-0 md:px-5 px-10 font-bold tracking-wide justify-between">
+                        <div className="flex-center-y sm:text-sm sm:px-0 md:px-5 px-10 font-bold tracking-wide justify-between">
                             <p className="">Products</p>
                             <div className="flex space-x-20 md:space-x-5">
                                 <p>Unit Price</p>
@@ -54,14 +54,14 @@ export default function Cart() {
                             className="flex-center-y sm:flex-col text-white p-10 md:p-5 sm:p-2 justify-between"
                         >
                             <div className="flex md:flex-col">
-                                <div className="flex-center-x">
+                                <div className="flex">
                                     <img
                                         src={item.img}
                                         alt="product"
-                                        className="md:w-full object-cover rounded-2xl"
+                                        className="lg:w-5/6 md:w-full object-cover rounded-2xl"
                                     />
                                 </div>
-                                <div className="flex-center lg:px-5 px-10 md:px-0 md:py-5">
+                                <div className="flex-center lg:px-0 px-10 md:px-0 md:py-5">
                                     <div className="flex flex-col space-y-2 md:px-4 text-right pr-2">
                                         <span>Name:</span>
                                         <span>Size:</span>
@@ -76,9 +76,9 @@ export default function Cart() {
                                     </div>
                                 </div>
                             </div>
-                            <div className="flex-center-y md:px-0 gap-x-16 md:gap-x-1">
+                            <div className="flex-center-y md:px-0 gap-x-20 md:gap-x-1">
                                 <h1 className="text-white">{item.Price} $</h1>
-                                <div className="flex-center-y px-5 space-x-9 md:space-x-5">
+                                <div className="flex-center-y px-3 space-x-5">
                                     <AiOutlineMinus
                                         className="text-white cursor-pointer"
                                         onClick={() => handleChangeAmount(0)}
@@ -89,7 +89,7 @@ export default function Cart() {
                                         onClick={() => handleChangeAmount(1)}
                                     />
                                 </div>
-                                <h1 className="text-white md:px-3 md:pr-10 sm:px-0">
+                                <h1 className="text-white pr-5 md:px-3 md:pr-10 sm:px-0">
                                     {item.Price} $
                                 </h1>
                                 <div>
