@@ -10,17 +10,17 @@ import Account from "pages/Account";
 import Address from "pages/Account/components/Address";
 import Purchase from "pages/Account/components/Purchase";
 import { useRoutes } from "react-router-dom";
-import TestGGMap from "pages/Payment/components/TestGGMap";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { userApi } from "apis/userApi";
 import { login } from "reducers/userSlice";
 import Loading from "components/Loading";
+import NewProduct from "pages/NewProduct";
 
 export default function App() {
     const dispatch = useDispatch();
-    const user = useSelector(state => state.user);
-    // const getCurrentUser 
+    const user = useSelector((state) => state.user);
+    // const getCurrentUser
     const [loading, setLoading] = useState(false);
     useEffect(() => {
         async function getCurrentUser() {
@@ -30,7 +30,6 @@ export default function App() {
                     const response = await userApi.currentUser();
                     dispatch(login(response.data));
                     setLoading(false);
-
                 } catch (error) {
                     localStorage.removeItem("token");
                     setLoading(false);
@@ -68,8 +67,8 @@ export default function App() {
                     element: <About />,
                 },
                 {
-                    path: "test-gg-map",
-                    element: <TestGGMap />,
+                    path: "new-product",
+                    element: <NewProduct />,
                 },
                 {
                     path: "drinks",
@@ -104,14 +103,13 @@ export default function App() {
                                     element: <Address />,
                                 },
                             ],
-                        }, {
+                        },
+                        {
                             path: "feedback",
                             element: <Feedback />,
-                        }
-                    ]
-
+                        },
+                    ],
                 },
-
             ],
         },
     ]);

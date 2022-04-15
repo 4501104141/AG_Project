@@ -162,7 +162,7 @@ export default function Payment() {
                                     </div>
                                 </div>
                                 <Button
-                                    className="bg-secondary-500"
+                                    className="bg-secondary-500 mb-5"
                                     name="Purchase"
                                     link
                                     href="/feedback"

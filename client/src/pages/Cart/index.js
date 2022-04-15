@@ -94,7 +94,7 @@ export default function Cart() {
                                 </h1>
                                 <div>
                                     <Button
-                                        className="bg-secondary-500 text-white"
+                                        className="text-white"
                                         Icon={AiOutlineClose}
                                     />
                                 </div>

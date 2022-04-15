@@ -10,8 +10,13 @@ export const getRandomNumber = () => {
 
 export const uploadImage = async (folder, file) => {
     try {
-        const snapshot = await uploadBytes(ref(storage, `${folder}/${getRandomNumber() + file.name}`), file);
-        const url = await getDownloadURL(snapshot.ref).then((downloadURL) => downloadURL);
+        const snapshot = await uploadBytes(
+            ref(storage, `${folder}/${getRandomNumber() + file.name}`),
+            file
+        );
+        const url = await getDownloadURL(snapshot.ref).then(
+            (downloadURL) => downloadURL
+        );
         return url;
     } catch (error) {
         console.log(error);
