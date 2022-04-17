@@ -1,7 +1,6 @@
 import { Link } from "react-router-dom";
 import Line from "./components/Line";
 import Logo from "./components/Logo";
-import Products from "components/Products";
 
 export default function Home() {
     return (

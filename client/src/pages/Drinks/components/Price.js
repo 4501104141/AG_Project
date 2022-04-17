@@ -1,15 +1,17 @@
 import { Combobox, Transition } from "@headlessui/react";
 import { HiSelector } from "react-icons/hi";
-import { useState, Fragment } from "react";
+import { useState, Fragment, useEffect } from "react";
 
-export default function Price() {
+export default function Price({ onChange }) {
     const price = [
-        { id: 1, name: "Low to high" },
-        { id: 2, name: "High to low" },
+        { id: 3, name: "Low to high" },
+        { id: 4, name: "High to low" },
     ];
     const [selected, setSelected] = useState(price[0]);
     const [query, setQuery] = useState("");
-
+    useEffect(() => {
+        onChange(selected.id);
+    }, [selected]);
     const filteredPrice =
         query === ""
             ? price

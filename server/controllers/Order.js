@@ -1,5 +1,6 @@
 const Order = require("../models/Order");
 const Coupon = require("../models/Coupon");
+const Product = require("../models/Product");
 exports.createOrder = async (req, res) => {
     try {
         const id = req.user._id;
@@ -10,6 +11,12 @@ exports.createOrder = async (req, res) => {
             coupon1.count = coupon1.count - 1;
             await coupon1.save();
         }
+        products.forEach(async (product) => {
+            const product1 = await Product.findById(product._id);
+            product1.purchases = product1.purchases + 1;
+            await product1.save();
+        }
+        );
         const order = await Order.create({
             user: id,
             products,

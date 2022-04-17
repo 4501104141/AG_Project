@@ -11,14 +11,11 @@ export default function Button({
 }) {
     return link ? (
         <Link
-            className={`${className} ${
-                active ? "bg-quaternary-500 text-black" : ""
-            }  py-2 px-5 font-semibold 
-                text-white outline-none border-none 
+            className={`${className} ${active ? "bg-quaternary-500 text-black" : "bg-primary-500 text-white"
+                }  py-2 px-5 font-semibold outline-none border-none 
                 rounded-md inline-block
-                bg-primary-500 shadow-md transition-all hover:bg-quaternary-500 
-                hover:text-black ${
-                    Icon ? "flex-center-y justify-between" : "text-center"
+                shadow-md transition-all hover:bg-quaternary-500 
+                hover:text-black ${Icon ? "flex-center-y justify-between" : "text-center"
                 }`}
             to={href}
         >
@@ -27,14 +24,11 @@ export default function Button({
         </Link>
     ) : (
         <button
-            className={`${className} ${
-                active ? "bg-quaternary-500 text-black" : ""
-            }  py-2 px-5 font-semibold 
-                text-white outline-none border-none 
-                 rounded-md
-                bg-primary-500 shadow-md transition-all hover:bg-quaternary-500 
-                hover:text-black ${
-                    Icon ? "flex-center-y justify-between" : "text-center"
+            className={`${className} ${active ? "bg-quaternary-500 text-black" : "bg-primary-500 text-white"
+                }  py-2 px-5 font-semibold 
+                 outline-none border-none 
+                 rounded-md shadow-md transition-all hover:bg-quaternary-500 
+                hover:text-black ${Icon ? "flex-center-y justify-between" : "text-center"
                 }`}
             onClick={onclick}
         >
