@@ -12,6 +12,7 @@ export default function Header() {
     const dispatch = useDispatch();
     const navigate = useNavigate();
     const user = useSelector(state => state.user);
+    const cartSum = useSelector(state => state.cart.items.length);
     const responseGoogle = async (rs) => {
         const response = await userApi.loginGoogle(rs.tokenId);
         dispatch(login(response.data));
@@ -101,7 +102,7 @@ export default function Header() {
                         <div className="relative">
                             <FaShoppingCart />
                             <span className="absolute -top-[10px] -right-[10px] w-5 h-5 bg-primary-600 rounded-full flex-center text-xs">
-                                2
+                                {cartSum}
                             </span>
                         </div>
                     </Link>

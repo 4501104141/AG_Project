@@ -1,16 +1,16 @@
 import { useEffect, useState } from "react";
 import { Range } from "react-range";
 
-export default function RangePicker() {
+export default function RangePicker({ name, onChange }) {
     const [value, setValue] = useState([100]);
-    const [classValue, setClassValue] = useState("");
     useEffect(() => {
-        setClassValue(`after:content-['${value[0]}']`);
+        onChange(name, value[0]);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [value]);
     return (
         <>
             <Range
-                step={20}
+                step={10}
                 min={0}
                 max={100}
                 values={value}

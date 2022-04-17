@@ -1,6 +1,5 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { RadioGroup } from "@headlessui/react";
-import { AiOutlineCheck } from "react-icons/ai";
 
 const plans = [
     {
@@ -13,8 +12,12 @@ const plans = [
         name: "L",
     },
 ];
-export default function Size() {
+export default function Size({ setValue }) {
     const [selected, setSelected] = useState(plans[0]);
+    useEffect(() => {
+        setValue("size", selected.name);
+        // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, [selected]);
     return (
         <div className="">
             <div className="">
@@ -25,16 +28,14 @@ export default function Size() {
                                 key={plan.name}
                                 value={plan}
                                 className={({ active, checked }) =>
-                                    `${
-                                        active
-                                            ? "ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60"
-                                            : ""
+                                    `${active
+                                        ? "ring-2 ring-offset-2 ring-offset-sky-300 ring-white ring-opacity-60"
+                                        : ""
                                     }
-                                     ${
-                                         checked
-                                             ? "bg-primary-500 font-bold w-14 bg-opacity-75 text-white"
-                                             : "bg-secondary-500 text-2xl w-14 font-bold"
-                                     }
+                                     ${checked
+                                        ? "bg-primary-500 font-bold w-14 bg-opacity-75 text-white"
+                                        : "bg-secondary-500 text-2xl w-14 font-bold"
+                                    }
                                  relative rounded-lg shadow-md py-4 cursor-pointer flex-center focus:outline-none`
                                 }
                             >
@@ -45,21 +46,19 @@ export default function Size() {
                                                 <div className="text-sm">
                                                     <RadioGroup.Label
                                                         as="p"
-                                                        className={`font-medium  ${
-                                                            checked
-                                                                ? "text-white"
-                                                                : "text-gray-900"
-                                                        }`}
+                                                        className={`font-medium  ${checked
+                                                            ? "text-white"
+                                                            : "text-gray-900"
+                                                            }`}
                                                     >
                                                         {plan.name}
                                                     </RadioGroup.Label>
                                                     <RadioGroup.Description
                                                         as="span"
-                                                        className={`inline ${
-                                                            checked
-                                                                ? "text-sky-100"
-                                                                : "text-gray-500"
-                                                        }`}
+                                                        className={`inline ${checked
+                                                            ? "text-sky-100"
+                                                            : "text-gray-500"
+                                                            }`}
                                                     ></RadioGroup.Description>
                                                 </div>
                                             </div>

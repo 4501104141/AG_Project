@@ -20,7 +20,7 @@ export const userSlice = createSlice({
             state.data.name = payload.user.name;
             state.data.email = payload.user.email;
             state.data.avatar = payload.user.avatar;
-            state.data.addresses = payload.user.addresses;
+            state.data.addresses = payload.user.addresses.sort((a, b) => b.isDefault - a.isDefault);
             state.isLogin = true;
             localStorage.setItem("token", payload.token);
         },

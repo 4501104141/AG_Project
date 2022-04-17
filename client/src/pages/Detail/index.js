@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import { BsArrowRight } from "react-icons/bs";
 import Size from "./components/Size";
@@ -7,31 +7,52 @@ import { useEffect, useState } from "react";
 import Button from "../../components/Button";
 import RangePicker from "./components/RangePicker";
 import { productApi } from "apis/productApi";
+import { useDispatch } from "react-redux";
+import { add } from "reducers/cartSlice";
 export default function Details() {
-    const [product, setProduct] = useState();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
+    const [data, setData] = useState();
+    const [option, setOption] = useState({
+        size: "S",
+        milk: 100,
+        sweetness: 100,
+        amount: 1,
+    });
     const { id } = useParams();
-    const [amount, setAmount] = useState(1);
     const handleChangeAmount = (type) => {
         switch (type) {
             case 1:
-                setAmount(amount + 1);
+                setOption({ ...option, amount: option.amount + 1 });
                 break;
             case 0:
-                amount > 1 && setAmount(amount - 1);
+                option.amount > 1 && setOption({ ...option, amount: option.amount - 1 });
                 break;
             default:
                 break;
         }
     };
+    const handleChangeValue = (type, value) => {
+        setOption({ ...option, [type]: value });
+    };
+    const handleAddToCart = () => {
+        dispatch(add({
+            _id: data._id,
+            name: data.name,
+            image: data.image,
+            option,
+            priceBefore: option.size === "S" ? data.price : option.size === "M" ? data.price + 1 : data.price + 2,
+            priceAfter: option.size === "S" ? option.amount * data.price : option.size === "M" ? option.amount * data.price + 1 : option.amount * data.price + 2,
+        }));
+    };
     useEffect(() => {
         async function fetchProduct() {
             const response = await productApi.getProduct(id);
-            console.log("response: ", response);
-            setProduct(response.data);
+            setData(response.data);
         }
         fetchProduct();
         return () => {
-            setProduct([]);
+            setData([]);
         };
     }, [id]);
     return (
@@ -44,33 +65,33 @@ export default function Details() {
                             Drinks
                         </Link>
                         <BsArrowRight className="text-black text-5xl mx-5" />
-                        <p>{product?.name}</p>
+                        <p>{data?.name}</p>
                     </div>
                     <div className="w-full grid grid-cols-2 mx-auto lg:gap-10 gap-20 px-2 max-w-6xl lg:grid-cols-1">
                         <div className="flex-center flex-col lg:pt-5 space-y-10">
                             <img
-                                src={product?.image}
-                                alt={product?._id}
+                                src={data?.image}
+                                alt={data?._id}
                                 className="w-full lg:w-3/6 sm:w-4/6 h-96 object-center object-cover rounded-md"
                             />
                             <div className="text-center lg:px-40 md:px-32 sm:px-10 px-10">
                                 <p className="md:text-lg sm:text-base">
                                     {
-                                        product?.description
+                                        data?.description
                                     }
                                 </p>
                             </div>
                         </div>
                         <div>
                             <h1 className="text-4xl lg:text-3xl md:text-2xl sm:text-xl font-bold tracking-wide">
-                                {product?.name}
+                                {data?.name}
                             </h1>
                             <div className="px-4 tracking-widest text-xl md:text-lg sm:text-base">
                                 <div className="py-2 flex-center-y justify-between">
                                     <h3 className=" md:pr-14 pr-8 font-bold">
                                         Size
                                     </h3>
-                                    <Size />
+                                    <Size setValue={handleChangeValue} />
                                 </div>
                                 <div className="py-4 flex-center-y font-bold justify-between">
                                     <h3 className="pr-11 md:pr-6">Amount</h3>
@@ -83,7 +104,7 @@ export default function Details() {
                                             <div className="absolute bg-white h-full w-1 top-0 right-0"></div>
                                         </button>
                                         <p className="text-center sm:px-5 px-8">
-                                            {amount}
+                                            {option.amount}
                                         </p>
                                         <button
                                             className="relative px-7 sm:px-5 flex-center-x"
@@ -97,7 +118,7 @@ export default function Details() {
                                 <div className="font-bold">
                                     <h3 className="md:mb-0 mb-5">Milk</h3>
                                     <div className="bg-primary-500 w-full h-1 relative mb-4 mt-2">
-                                        <RangePicker />
+                                        <RangePicker name="milk" onChange={handleChangeValue} />
                                     </div>
                                 </div>
                                 <div className="font-bold">
@@ -105,20 +126,23 @@ export default function Details() {
                                         Sweetness
                                     </h3>
                                     <div className="bg-primary-500 w-full h-1 relative mb-4 mt-2">
-                                        <RangePicker />
+                                        <RangePicker name="sweetness" onChange={handleChangeValue} />
                                     </div>
                                 </div>
                                 <div className="py-4 flex justify-between pb-8 font-bold">
                                     <h3 className="pr-8">Price</h3>
-                                    <h3 className="pr-8">{product?.price}$</h3>
+                                    <h3 className="pr-8">{option.size === "S" ? option.amount * data?.price : option.size === "M" ? option.amount * data?.price + 1 : option.amount * data?.price + 2}$</h3>
                                 </div>
                             </div>
                             <div className="flex px-10 lg:justify-end lg:space-x-10 md:px-4 sm:px-0 justify-around">
-                                <Button name="Order now" className="sm:px-3" />
+                                <Button name="Order now" className="sm:px-3" onclick={() => {
+                                    navigate('/cart');
+                                }} />
                                 <Button
                                     name="Add to cart"
                                     onClick="handleAddToCart"
                                     className="sm:px-3"
+                                    onclick={handleAddToCart}
                                 />
                             </div>
                         </div>

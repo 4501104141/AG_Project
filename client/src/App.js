@@ -16,6 +16,7 @@ import { userApi } from "apis/userApi";
 import { login } from "reducers/userSlice";
 import Loading from "components/Loading";
 import NewProduct from "pages/NewProduct";
+import { storage } from "reducers/cartSlice";
 
 export default function App() {
     const dispatch = useDispatch();
@@ -36,11 +37,12 @@ export default function App() {
                 }
             }
         }
+        dispatch(storage());
         getCurrentUser();
     }, [dispatch]);
     if (loading) return <Loading />;
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    return useRoutes([
+    else return useRoutes([
         {
             path: "/",
             element: <PublicLayout />,
@@ -105,7 +107,7 @@ export default function App() {
                             ],
                         },
                         {
-                            path: "feedback",
+                            path: "feedback/:id",
                             element: <Feedback />,
                         },
                     ],

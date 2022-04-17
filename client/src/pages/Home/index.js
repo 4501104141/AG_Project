@@ -2,7 +2,6 @@ import { Link } from "react-router-dom";
 import Line from "./components/Line";
 import Logo from "./components/Logo";
 import Products from "components/Products";
-import { useSelector } from "react-redux";
 
 export default function Home() {
     return (
@@ -37,8 +36,6 @@ export default function Home() {
                     </div>
                     <div className="bg-cf-right bg-no-repeat h-60 bg-center "></div>
                 </div>
-                <Line title="Explore the Coffee World" />
-                <Products />
                 <Line title="Brands We Work With" />
                 <Logo />
             </div>
