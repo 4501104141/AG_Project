@@ -8,6 +8,7 @@ export default function Drinks() {
     const [products, setProducts] = useState([]);
     const [productsRender, setProductsRender] = useState([]);
     const [sort, setSort] = useState(0);
+    const [search,setSearch]= useState("");
     const handlePriceSort = (value) => {
         setSort({
             ...sort, secondSort: value,
@@ -15,6 +16,10 @@ export default function Drinks() {
     };
     useEffect(() => {
         let temp = [...products];
+        // products[0]&& console.log(products[0].name.toLowerCase().has("a"))
+        if(search){
+            temp = temp.filter(item=> item.name.toLowerCase().includes(search));
+        }
         if (sort.firstSort === 1) {
             temp = temp.sort((a, b) => b.purchases - a.purchases);
         }
@@ -31,7 +36,7 @@ export default function Drinks() {
         }
         setProductsRender(temp);
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [sort]);
+    }, [sort,search]);
     useEffect(() => {
         async function fetchAllProducts() {
             const response = await productApi.getProducts();
@@ -81,6 +86,8 @@ export default function Drinks() {
                                 type="text"
                                 placeholder="Find"
                                 maxLength={20}
+                                onChange={(e)=>setSearch(e.target.value)}
+                                value={search}
                                 className="outline-none bg-primary-500 md:w-48 sm:w-full sm:px-4 px-4 h-full rounded-md text-white font-bold placeholder:font-normal"
                             />
                         </div>
